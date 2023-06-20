@@ -1,0 +1,6 @@
+Gonzalez Maria       35 Obra Social1    123456 Traumatologia        17 M
+Rodriguez Javier     42 Obra Social2    789012 Obstetricia          17 T
+Martinez Sofia       08 Obra Social3    456789 Pediatria            17 N
+Lopez Ana            52 Obra Social4    987654 Cardiologia          17 M
+Perez Laura          30 Obra Social5    234567 Dermatologia         17 T
+Elvira Mañas         42 Obra Social56

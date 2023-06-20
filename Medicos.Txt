@@ -1,0 +1,11 @@
+Gonzalez Maria       123456 Traumatologia        M
+Rodriguez Luis       654321 Obstetricia          T
+Martinez Juan        789012 Pediatria            N
+Lopez Maria          345678 Cardiologia          M
+Perez Carlos         901234 Dermatologia         T
+Garcia Laura         567890 Oftalmologia         M
+Hernandez Alejandros 432109 Otorrinolaringologia T
+Sanchez Sofia        876543 Endocrinologia       N
+Fernandez Javier     210987 Neurologia           M
+Torres Ana           765432 Gastroenterologia    T
+Ramirez Claudia      123789 Nefrologia           N
