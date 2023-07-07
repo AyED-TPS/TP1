@@ -22,3 +22,69 @@ Endocrinologia       14 14 00 Obra Social1    123456
 Oftalmologia         16 17 30 Obra Social8    567890
 Urologia             16 18 00 Obra Social9    678901
 Nefrologia           16 19 30 Obra Social10   789013
+---- Parte Agregada, Si no es necesaria borrar -----
+Pediatria            15 11 30 Osde            137529
+Nutriologia           8 19 00 Medife             321
+Cardiologia          23  8 30 Galeno            1854
+Ginecologia           4 18 30 Swiss Medical    34593
+Dermatologia         18 12 00 Ioma            412739
+Neurologia           17 17 30 Accord Salud        93
+Analisis Clinico     28 14 00 Swiss Medical     3623
+Oftalmologia         16  8 00 Osplad            8741
+Psiquiatria          30 16 00 Osde              3245
+Farmacologia         23 12 30 Medife           13495
+Neurologia           17  8 30 Galeno          820341
+Analisis Clinico     12 19 30 Swiss Medical    24523
+Pediatria            11 16 00 Osplad           17531
+Farmacologia          2 18 00 Ioma            370851
+Neurologia            3  9 30 Accord Salud      1789
+Traumatologia         1 10 30 Ioma             40178
+Radiologia            4 11 00 Osde               291
+Cardiologia          13 19 00 Swiss Medical        2
+Dermatologia         11 14 30 Galeno              43
+Neurologia           11 12 00 Galeno             317
+Traumatologia         1 15 00 Accord Salud     14730
+Analisis Clinico     13 17 30 Medife           12790
+Nutriologia          29 12 30 Osplad          712839
+Dermatologia         17 13 00 Ioma              1289
+Psiquiatria          20 19 30 Medife            3169
+Analisis Clinico     30  9 00 Galeno           42674
+Psiquiatria           2 19 30 Swiss Medical   316934
+Neurologia            7 12 00 Osde             48123
+Oftalmologia         16 10 30 Osde             99502
+Neurologia           27 17 30 Osplad             788
+Nutriologia          31 18 00 Ioama            32294
+Ginecologia          11 11 30 Medife            8979
+Analisis Clinico     13 15 00 Accord Salud        57
+Dermatologia         28 12 00 Accord Salud      4872
+Ginecologia          10 18 30 Osde            266376
+Dermatologia         12 10 30 Swiss Medical    91055
+Neurologia            5  8 30 Galeno              72
+Nutriologia           3  9 00 Osplad             994
+Psiquiatria          16 16 00 Medife             499
+Traumatologia        29 10 00 Ioma            526019
+Radiologia           30 12 00 Ioma            829003
+Oftalmologia         11 18 30 Osde              5451
+Dermatologia          2 12 00 Swiss Medical      483
+Neurologia            9 11 00 Swiss Medical   176280
+Cardiologia          19 16 30 Accord Salud      4421
+Dermatologia          3 17 30 Galeno            4088
+Cardiologia          26  8 30 Medife              80
+Pediatria             5  8 30 AcaSalud           724
+Pediatria            20  9 30 Union Personal   37672
+Psiquiatria          19 17 00 Osde               590
+Oftalmologia         30 18 00 Osplad           69401
+Traumatologia         3 10 30 Accord Salud      4430
+Cardiologia          24 16 30 AcaSalud        186737
+Nutriologia          16 14 00 AcaSalud        781252
+Radiologia           15 17 30 Medife           14132
+Psiquiatria          30 13 00 Swiss Medical    68876
+Analisis Clinico     18 17 30 Osde               248
+Farmacologia         14 19 00 Galeno           75471
+Radiologia           20  8 00 Osplad          560148
+Cardiologia          15 11 30 Swiss Medical     3165
+Psiquiatria          18 15 00 Accord Salud      4919
+Pediatria            31 10 30 AcaSalud            30
+Nutriologia          11 15 30 Galeno           80697
+Pediatria            14 14 00 AcaSalud           605
+Nutriologia          12 14 30 Meicus          945507
