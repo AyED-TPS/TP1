@@ -18,3 +18,16 @@ Radiologia
 Reumatologia
 Geriatria
 Nutricion
+----Especialidades que use para medicos y turnos ---
+Pediatria
+Psiquiatria
+Neurologia
+Cardiologia
+Traumatologia
+Farmacologia
+Radiologia
+Analisis Clinico
+Ginecologia
+Nutriologia
+Oftalmologia
+Dermatologia
