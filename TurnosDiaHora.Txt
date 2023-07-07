@@ -84,7 +84,7 @@ Farmacologia         14 19 00 Galeno           75471
 Radiologia           20  8 00 Osplad          560148
 Cardiologia          15 11 30 Swiss Medical     3165
 Psiquiatria          18 15 00 Accord Salud      4919
-Pediatria            31 10 30 AcaSalud            30
+Pediatria            30 10 30 AcaSalud            30
 Nutriologia          11 15 30 Galeno           80697
 Pediatria            14 14 00 AcaSalud           605
 Nutriologia          12 14 30 Meicus          945507
