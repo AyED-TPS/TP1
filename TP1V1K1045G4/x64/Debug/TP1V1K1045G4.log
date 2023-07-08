@@ -1,3 +1,4 @@
 ﻿  TP1V1K1045G4.cpp
 C:\Users\MARTIN\Desktop\Algoritmo1UTN\Unidad1\TP1V1K1045G4\TP1V1K1045G4.cpp(29,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\MARTIN\Desktop\Algoritmo1UTN\Unidad1\TP1V1K1045G4\TP1V1K1045G4.cpp(80,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   TP1V1K1045G4.vcxproj -> C:\Users\MARTIN\Desktop\Algoritmo1UTN\Unidad1\TP1V1K1045G4\x64\Debug\TP1V1K1045G4.exe
