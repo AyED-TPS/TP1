@@ -10,9 +10,6 @@ Benitez Roberto      242466 Ginecologia          N
 Sancho Nicolas       518995 Analisis Clinico     M
 Fernandez Liliana    410661 Analisis Clinico     T
 Ruiz Pedro           241381 Analisis Clinico     N
-Lazaro Ortega        251999 Analisis Clinico     M
-Daniel del Olmo      214444 Analisis Clinico     T
-Francesca Gonzalo    213302 Analisis Clinico     N
 Herrera Horacio      826340 Nutriologia          M
 Benitez Pedro        777389 Nutriologia          T
 Ramirez Roberto      354250 Nutriologia          N
@@ -31,24 +28,18 @@ Cuello Hugo          695405 Dermatologia         N
 Toker Camila         254705 Cardiologia          M
 Romero Ricardo       346074 Cardiologia          T
 Gimenez Alicia       102076 Cardiologia          N
-Filomena Barrio      144542 Cardiologia          T
-Teo Carrion          100023 Cardiologia          T
 Gimenez Valeria      669367 Pediatria            M
 Acosta Nicolas       278826 Pediatria            T
 Alvarez Raul         282579 Pediatria            N
 Diaz Claudio         312994 Traumatologia        M
 Medina Sergio        576061 Traumatologia        T
 Gimenez Natalia      245433 Traumatologia        N
-Gloria Linares       163004 Traumatologia        M
 Gonzalez Santhiago   651324 Obstetricia          M
 Lopez Patricia       354218 Obstetricia          T
 Bertoti Alicia       189035 Obstetricia          N
 Sztajnszrajber Mauro 356845 Odontologia          M
 Alvarez Dario        987210 Odontologia          T
 Sztajnszrajber Maria 654302 Odontologia          N
-Jeronima Antolin     144114 Odontologia          N
-Roig Teresa          168887 Odontologia          N
-Chaparro Benigno     123777 Odontologia          N
 Gimenez Susana       303030 Neonatologia         M
 Grande Ariana        144104 Neonatologia         T
 Sztajnszrajber Maria 254254 Neonatologia         N
