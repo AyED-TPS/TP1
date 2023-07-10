@@ -1,33 +1,20 @@
 Traumatologia
-Obstetricia
 Pediatria
 Cardiologia
 Dermatologia
 Oftalmologia
-Otorrinolaringologia
-Endocrinologia
-Neurologia
-Gastroenterologia
-Urologia
-Nefrologia
-Psiquiatria
-Infectologia
-Hematologia
-Oncologia
-Radiologia
-Reumatologia
-Geriatria
-Nutricion
-----Especialidades que use para medicos y turnos ---
-Pediatria
 Psiquiatria
 Neurologia
-Cardiologia
-Traumatologia
-Farmacologia
-Radiologia
-Analisis Clinico
-Ginecologia
 Nutriologia
-Oftalmologia
-Dermatologia
+Analisis Clinico
+Radiologia
+Farmacologia
+Ginecologia
+Obstetricia
+Odontologia
+Neonatologia
+Gastroenterologia
+Endocrinologia
+Psicologia
+Hematologia
+Diabletologia
