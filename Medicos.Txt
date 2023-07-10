@@ -1,48 +1,69 @@
-Gonzalez Maria       123456 Traumatologia        M
-Rodriguez Luis       654321 Obstetricia          T
-Martinez Juan        789012 Pediatria            N
-Lopez Maria          345678 Cardiologia          M
-Perez Carlos         901234 Dermatologia         T
-Garcia Laura         567890 Oftalmologia         M
-Hernandez Alejandros 432109 Otorrinolaringologia T
-Sanchez Sofia        876543 Endocrinologia       N
-Fernandez Javier     210987 Neurologia           M
-Torres Ana           765432 Gastroenterologia    T
-Ramirez Claudia      123789 Nefrologia           N
----- Parte agregada ------------------------------
-Alvarez Raul           2579 Pediatria            T
-Flores Mario            541 Psiquiatria          M
-Ramirez Roberto          50 Nutriologia          M
-Acosta Nicolas          826 Pediatria            M
-Gimenez Natalia         433 Traumatologia        T
-Perez Cintia         952621 Neurologia           M
-Benitez Pedro        777389 Nutriologia          N
+Gomez Luis           229591 Radiologia           M
+Di Lorenzo Serena    270032 Radiologia           T
+Venture Vin          281234 Radiologia           N
+Diaz Juana           284702 Farmacologia         M
+Garcia Julio         215892 Farmacologia         T
+Flores Silvina       233938 Farmacologia         N
+Lopez Victot         202486 Ginecologia          M
+Acosta Oscar         579655 Ginecologia          T
+Benitez Roberto      242466 Ginecologia          N
+Sancho Nicolas       518995 Analisis Clinico     M
+Fernandez Liliana    410661 Analisis Clinico     T
 Ruiz Pedro           241381 Analisis Clinico     N
-Medina Sergio         76061 Traumatologia        M
-Benitez Roberto         066 Ginecologia          N
-Gomez Mauricio         0478 Oftalmologia         M
-Diaz Claudio           2994 Traumatologia        N
-Fernandez Liliana       661 Analisis Clinico     M
-Gimenez Alicia           76 Cardiologia          T
-Flores Ana             3284 Psiquiatria          N
-Glasserman Milena    150105 Psiquiatria          T
-Garcia Julio          15892 Farmacologia         T
-Gimenez Valeria         367 Pediatria            N
-Herrera Horacio      826340 Nutriologia          T
-Cuello Hugo          695405 Dermatologia         M
-Flores Silvina        33938 Farmacologia         M
-Gomez Luis            29591 Radiologia           T
-Herrera Mauricio         63 Neurologia           N
-Romero Ricardo        46074 Cardiologia          M
-Alvarez Alicia          718 Neurologia           T
-Diaz Juana             4702 Farmacologia         N
-Flores Maximiliano    93957 Dermatologia         T
-Toker Camila            705 Cardiologia          N
-Sancho Nicolas         8995 Analisis Clinico     T
-Cahuaya Luis            428 Oftalmologia         N
-Acosta Oscar          79655 Ginecologia          M
-Di Lorenzo Serena     70032 Radiologia           N
-Miotti Bianca          9855 Dermatologia         N
-Insaurralde Camila      407 Oftalmologia         T
-Lopez Victot           2486 Ginecologia          T
-Venture Vin            1234 Radiologia           M
+Lazaro Ortega        251999 Analisis Clinico     M
+Daniel del Olmo      214444 Analisis Clinico     T
+Francesca Gonzalo    213302 Analisis Clinico     N
+Herrera Horacio      826340 Nutriologia          M
+Benitez Pedro        777389 Nutriologia          T
+Ramirez Roberto      354250 Nutriologia          N
+Fernandez Javier     210987 Neurologia           M
+Herrera Mauricio     287563 Neurologia           T
+Perez Cintia         952621 Neurologia           N
+Glasserman Milena    150105 Psiquiatria          M
+Flores Mario         354541 Psiquiatria          T
+Flores Ana           483284 Psiquiatria          N
+Insaurralde Camila   241407 Oftalmologia         M
+Cahuaya Luis         123428 Oftalmologia         T
+Gomez Mauricio       174478 Oftalmologia         N
+Miotti Bianca        259855 Dermatologia         M
+Flores Maximiliano   793957 Dermatologia         T
+Cuello Hugo          695405 Dermatologia         N
+Toker Camila         254705 Cardiologia          M
+Romero Ricardo       346074 Cardiologia          T
+Gimenez Alicia       102076 Cardiologia          N
+Filomena Barrio      144542 Cardiologia          T
+Teo Carrion          100023 Cardiologia          T
+Gimenez Valeria      669367 Pediatria            M
+Acosta Nicolas       278826 Pediatria            T
+Alvarez Raul         282579 Pediatria            N
+Diaz Claudio         312994 Traumatologia        M
+Medina Sergio        576061 Traumatologia        T
+Gimenez Natalia      245433 Traumatologia        N
+Gloria Linares       163004 Traumatologia        M
+Gonzalez Santhiago   651324 Obstetricia          M
+Lopez Patricia       354218 Obstetricia          T
+Bertoti Alicia       189035 Obstetricia          N
+Sztajnszrajber Mauro 356845 Odontologia          M
+Alvarez Dario        987210 Odontologia          T
+Sztajnszrajber Maria 654302 Odontologia          N
+Jeronima Antolin     144114 Odontologia          N
+Roig Teresa          168887 Odontologia          N
+Chaparro Benigno     123777 Odontologia          N
+Gimenez Susana       303030 Neonatologia         M
+Grande Ariana        144104 Neonatologia         T
+Sztajnszrajber Maria 254254 Neonatologia         N
+Ball Federico        102419 Gastroenterologia    M
+Legrand Mirtha       879788 Gastroenterologia    T
+Gonzalez Rosa        258430 Gastroenterologia    N
+Abdelkader Sola      951207 Endocrinologia       M
+Jennifer Ali         465213 Endocrinologia       T
+Soledad Cortes       171804 Endocrinologia       N
+Sergio Arjona        062318 Psicologia           M
+Adil Cuesta          576324 Psicologia           T
+Matilde Jimenez      282915 Psicologia           N
+Alan Flores          410253 Hematologia          M
+Raul Camps           951736 Hematologia          T
+Juana Aranda         524862 Hematologia          N
+Brenda Giron         395241 Diabetologia         M
+Joseba Manso         251684 Diabetologia         T
+Mihaela Jover        381654 Diabetologia         N
