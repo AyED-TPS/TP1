@@ -17,4 +17,4 @@ Gastroenterologia
 Endocrinologia
 Psicologia
 Hematologia
-Diabletologia
+Diabetologia
