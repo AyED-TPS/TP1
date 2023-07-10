@@ -13,15 +13,11 @@ Cantidad: 20, es la maxima
 
 ## Medicos
 
-Cantidad: 69, es el minimo, agregandole mas medicos a ciertas especialidades con sus turnos.
+Cantidad: 60, es el maximo.
+Es una trampa que los medicos sean 100 maximo, porque en realidad con un maximo de 20 especialidades podemos maximizar 60 medicos... porque "Para todo médico un solo turno y todos los días." **Y** 24 turnos en total por dia. Esta ultima parte es fundmental porque podriamos decir que puede haber 4 medicos por especialidad ya que hay tres por turno (tres) y el otro faltante puede estar en otro mismo turno que otro pero atender a las personas en consultorios diferentes... pero no, porque sino se podrian atender a 16 personas por turno cuando solo se puede atender 8 porque cuadraria 
 
-Hay tres medicos por especialidad minimamente.
-Las especialidades que no cumplen con eso son:
+8+8+8 = 24 turnos en total
 
-Traumatologia    (4) sobrantes (turnos) M
+invalidando la teoria de que puede haber mas de tres medicos por especialidad.
 
-Cardiologia      (5) sobrantes (turnos) T T
-
-Analisis Clinico (6) sobrantes (turnos) M T N
-
-Odontologia      (6) sobrantes (turnos) N N N
+Hay tres medicos por especialidad.
