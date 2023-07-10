@@ -1,0 +1,20 @@
+Traumatologia
+Pediatria
+Cardiologia
+Dermatologia
+Oftalmologia
+Psiquiatria
+Neurologia
+Nutriologia
+Analisis Clinico
+Radiologia
+Farmacologia
+Ginecologia
+Obstetricia
+Odontologia
+Neonatologia
+Gastroenterologia
+Endocrinologia
+Psicologia
+Hematologia
+Diabetologia

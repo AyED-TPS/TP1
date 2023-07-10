@@ -1,0 +1,131 @@
+     Listado de turnos INICIAL orden Espec.+Día+Turno
+   Especialidad     Día Horario Obr. Soc.       Nro. Cred.
+Psiquiatria           2 19:30   Swiss Medical   316934
+Psiquiatria           9 17:00   Osde            105590
+Psiquiatria          13 19:30   Medife          603169
+Psiquiatria          13 13:00   Swiss Medical   768876
+Psiquiatria          13 16:00   Osde            993245
+Psiquiatria          16 15:00   Accord Salud    244919
+Psiquiatria          16 16:00   Medife          745499
+Analisis Clinico      5 14:00   Swiss Medical   173623
+Analisis Clinico     12 19:30   Swiss Medical   824523
+Analisis Clinico     13  9:00   Galeno          142674
+Analisis Clinico     13 15:00   Accord Salud    102457
+Analisis Clinico     13 17:30   Medife          412790
+Analisis Clinico     16 17:30   Osde            563248
+Ginecologia           4 18:30   Swiss Medical   134593
+Ginecologia          10 18:30   Osde            266376
+Ginecologia          11 11:30   Medife          148979
+Nutriologia           3  9:00   Osplad          145994
+Nutriologia           8 19:00   Medife          145321
+Nutriologia           9 12:30   Osplad          712839
+Nutriologia          11 15:30   Galeno          780697
+Nutriologia          12 14:30   Meicus          945507
+Nutriologia          13 18:00   Ioama           532294
+Nutriologia          16 14:00   AcaSalud        781252
+Neurologia            3  9:30   Accord Salud    541789
+Neurologia            5  8:30   Galeno          545772
+Neurologia            7 12:00   Osde            548123
+Neurologia            7 17:30   Osplad          245788
+Neurologia            9 11:00   Swiss Medical   176280
+Neurologia           11  8:30   Galeno          820341
+Neurologia           11 12:00   Galeno          574317
+Neurologia           11 17:30   Accord Salud    245793
+Neurologia           11 19:30   Accord Salud    714493
+Neurologia           14 14:30   OMINT           789010
+Neurologia           14 15:00   Sancor Salud    456321
+Endocrinologia       14 14:00   Apres Salud     123456
+Nefrologia           16 19:30   Casa Salud      789013
+Otorrinolaringologia 15 13:30   Bristo Medicine 234567
+Traumatologia         1 15:00   Accord Salud    114730
+Traumatologia         1 10:30   Ioma            140178
+Traumatologia         3 10:30   Accord Salud    104430
+Traumatologia         9 10:00   Ioma            526019
+Traumatologia        15 10:00   Casa Salud      123456
+Traumatologia        16 09:00   Casa Salud      123456
+Obstetricia          15 10:30   CEMIC           789011
+Obstetricia          15 11:00   Cobermed        456789
+Obstetricia          16 10:30   CEMIC           789011
+Dermatologia          2 12:00   Swiss Medical   572483
+Dermatologia          3 17:30   Galeno          574088
+Dermatologia          5 12:00   Accord Salud    244872
+Dermatologia         11 13:00   Ioma            241289
+Dermatologia         11 14:30   Galeno          248443
+Dermatologia         12 10:30   Swiss Medical   191055
+Dermatologia         15 12 30   Federada Salud  345678
+Dermatologia         16 12 00   Ioma            412739
+Dermatologia         16 13 00   Federada Salud  234567
+Cardiologia           3  8 30   Galeno          241854
+Cardiologia           9 16 30   Accord Salud    684421
+Cardiologia          13 19 00   Swiss Medical   102842
+Cardiologia          14 16 30   AcaSalud        186737
+Cardiologia          15 11 30   Swiss Medical   163165
+Cardiologia          15 12 00   Federada Salud  234567
+Cardiologia          16  8 30   Medife          542180
+Cardiologia          16 12 30   COBERMET        987654
+Radiologia            4 11 00   Osde            214291
+Radiologia           13  8 00   Osplad          560148
+Radiologia           13 12 00   Ioma            829003
+Radiologia           15 17 30   Medife          714132
+Oftalmologia         11 18 30   Osde            875451
+Oftalmologia         13 18 00   Osplad          769401
+Oftalmologia         15 13 00   Hominis         987654
+Oftalmologia         16  8 00   Osplad          628741
+Oftalmologia         16 10 30   Osde            699502
+Oftalmologia         16 17 30   ENSALUD         567890
+Pediatria             5  8 30   AcaSalud        241724
+Pediatria            11 16 00   Osplad          517531
+Pediatria            13 10 30   AcaSalud        241730
+Pediatria            13  9 30   Union Personal  537672
+Pediatria            14 14 00   AcaSalud        241605
+Pediatria            15 11 00   Osde            137529
+Pediatria            15 11 30   COBERMET        987654
+Pediatria            16 11 00   Cobermed        456789
+Gastroenterologia    15 08 30   Federada Salud  345678
+Gastroenterologia    15 09 00   Hominis         987654
+Gastroenterologia    15 09 30   ENSALUD         234567
+Gastroenterologia    16 08 00   Federada Salud  345678
+Gastroenterologia    16 15 30   Federada Salud  345678
+Farmacologia          2 18 00   Ioma            370851
+Farmacologia          3 12 30   Medife          713495
+Farmacologia         14 19 00   Galeno          375471
+Odontologia          12  8 00   CEMIC           012345
+Odontologia          12  8 30   Cobermed        112345
+Odontologia          12  9 00   Galeno          212345
+Odontologia          12  9 30   Swiss Medical   312345
+Odontologia          12 10 00   Swiss Medical   412345
+Odontologia          12 10 30   Accord Salud    512345
+Odontologia          12 11 00   Ioma            612345
+Odontologia          12 11 30   Galeno          712345
+Odontologia          12 12 00   Ioma            812345
+Odontologia          12 12 30   Federada Salud  912345
+Odontologia          12 13 00   Federada Salud  022345
+Odontologia          12 13 30   AcaSalud        122345
+Odontologia          12 14 00   Medife          222345
+Odontologia          12 14 30   Accord Salud    322345
+Odontologia          12 15 00   Swiss Medical   422345
+Odontologia          12 15 30   CEMIC           522345
+Odontologia          12 16 00   Cobermed        622345
+Odontologia          12 16 30   Galeno          722345
+Odontologia          12 17 00   Swiss Medical   822345
+Odontologia          12 17 30   Swiss Medical   922345
+Odontologia          12 18 00   Accord Salud    032345
+Odontologia          12 18 30   Ioma            132345
+Odontologia          12 19 00   Galeno          232345
+Odontologia          12 19 30   Ioma            332345
+Neonatologia          4 13 30 Medife          145556
+Neonatologia          8 12 30 Medife          135788
+Neonatologia         13 12 00 Medife          112345
+Psicologia           11 12 30 Osplad          100098
+Psicologia           14 12 30 Osplad          102101
+Psicologia           15 12 30 Osplad          153256
+Psicologia           16 12 30 Osplad          321688
+Hematologia          13 12 00 ENSALUD         321456
+Hematologia          13 12 30 ENSALUD         510055
+Hematologia          13 13 00 ENSALUD         258431
+Hematologia          13 13 30 ENSALUD         111011
+Hematologia          13 14 00 ENSALUD         132564
+Diabetologia         13 12 30 Hominis         987778
+Diabetologia         13 13 30 Hominis         688668
+Diabetologia         13 14 30 Hominis         012244
+
