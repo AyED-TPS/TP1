@@ -27,6 +27,14 @@ struct regTur{
 };
 typedef Tur tenTur[nMaxEsp][nMaxTur][dias];
 
+//Medicos
+struct regMedicos{
+    str20 apeNom;
+    short matri;
+    str20 esp;
+    char turno;
+};
+
 // X Obtener_medicos()
 // X Obtener_solicitud_turnos()
 
@@ -87,15 +95,16 @@ short cnvHhMm(short hhmm){
 /*
  * dada la hora en formato hhmm, devuelve la posicion del tensor de los turnos
  */
+    const short hIni = 800;
+    const short hFin = 1930;
     short pos = -1;
+    short i = hIni;
 
-    for(short i = 800; i <= 1930; ){
-        if(hhmm == i) return ++pos;
-        pos++;
-        i = pos % 2 ? i + 70 : i + 30;
+    while(i <= hFin && hhmm != i){
+        i = ++pos % 2 ? i + 70 : i + 30;
     }
 
-    return -1;
+    return ++pos;
 }
 
 void IntCmb(str20 &esp1, str20 &esp2){
@@ -107,7 +116,7 @@ void IntCmb(str20 &esp1, str20 &esp2){
 
 void OrdxBur(Esp &vEsp, int carEsp){
     int k = 0;
-    bool ordenado;
+    bool ordenado = true;
     do{
         k++;
         ordenado = true;
@@ -121,12 +130,6 @@ void OrdxBur(Esp &vEsp, int carEsp){
     } while(!ordenado);
 }
 
-void mostrarEsp(Esp vEsp, int carEsp){
-    for(int i = 0; i < carEsp; i++){
-        cout << vEsp[i] << endl;
-    }
-}
-
 main() {
 
     //Especialidades
@@ -137,16 +140,11 @@ main() {
         ifstream fTur("TurnosDiaHora.Txt");
         regTur regTurno;
         tenTur Turnos;
-        int carTur = 0;
+        //int carTur = 0;
 
     while( LeeEsp(fEsp, vEsp[carEsp]) )
-        carEsp++; // cardinal Esp
-
-    mostrarEsp(vEsp, carEsp);
-
-    OrdxBur(vEsp, carEsp);// ordena vEsp
-
-    mostrarEsp(vEsp, carEsp);
+        carEsp++;
+    OrdxBur(vEsp, carEsp);
 
     inicTur(Turnos, nMaxEsp, nMaxTur, dias);
     //while( LeeTur(fTur, regTurno) ){
@@ -155,7 +153,10 @@ main() {
       // carTur++;
     //}
 
-    mostrarTensor(Turnos, nMaxEsp, nMaxTur, dias);
+    //mostrarTensor(Turnos, nMaxEsp, nMaxTur, dias);
+
+    fEsp.close();
+    //fTur.close();
 
     return 0;
 }
