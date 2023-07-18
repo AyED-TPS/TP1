@@ -1,0 +1,30 @@
+Zuckerberg Mark      42 Galeno          247891 Nutriologia          17 T
+Garfield Andrew      24 Galeno          215431 Nutriologia          17 N
+Stoessel Tini        21 Accord Salud    778012 Nutriologia          17 T
+Weasley Ron          53 Ioma            431780 Ginecologia          17 M
+Quito Esteban        61 Osde            321567 Ginecologia          17 N
+Musk Elon            45 Accord Salud    243879 Analisis Clinico     17 M
+Curie Marie          54 Medife          246312 Analisis Clinico     17 M
+Mbappe Kylian        85 Swiss Medical   243124 Analisis Clinico     17 M
+Parker Peter         29 Medife          123456 Analisis Clinico     17 N
+Rodriguez Javier     42 Swiss Medical   789012 Obstetricia          17 T
+Martinez Sofia        8 Galeno          456789 Pediatria            17 N
+Maguire Tobey        34 Accord Salud    767123 Dermatologia         17 T
+Perez Laura          30 Osplad          234567 Dermatologia         17 T
+Messi Lionel         36 Swiss Medical   321560 Cardiologia          17 M
+Lopez Ana            52 Accord Salud    987654 Cardiologia          17 M
+Gonzalez Maria       35 Medife          123456 Traumatologia        17 M
+Alver Julian         42 Medife          251849 Traumatologia        17 M
+Leonel Messi         16 Medife          135742 Traumatologia        17 M
+Ronaldo Cristiano    53 Medife          316847 Traumatologia        17 M
+Clemente Rodriguez   13 Medife          741963 Traumatologia        17 M
+Nahia Agullo         31 Medife          234876 Traumatologia        17 M
+Francisca Berrocal   51 Medife          951645 Traumatologia        17 M
+Denis Santiago       14 Medife          122548 Traumatologia        17 M
+Ronaldo Cristiano    39 Ioma            321567 Traumatologia        17 T
+Morales Miles        18 Osplad          321563 Radiologia           17 M
+Watson Emma          28 Medife          215874 Neurologia           17 N
+Esposito Lali        23 Medife          245124 Farmacologia         17 N
+Holland Tom          19 Swiss Medical   775392 Farmacologia         17 M
+Potter Harry         22 Galeno          752317 Psiquiatria          17 T
+Granger Hermione     17 Osplad          731890 Psiquiatria          17 T
