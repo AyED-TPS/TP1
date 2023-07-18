@@ -91,6 +91,12 @@ void mostrarTensor(tenTur tensor, int caras, int filas, int columnas){
     }
 }
 
+void mostrarEsp(Esp vEsp, int carEsp){
+    for(int i = 0; i < carEsp; i++){
+        cout << vEsp[i] << endl;
+    }
+}
+
 short cnvHhMm(short hhmm){
 /*
  * dada la hora en formato hhmm, devuelve la posicion del tensor de los turnos
@@ -107,8 +113,12 @@ short cnvHhMm(short hhmm){
     return ++pos;
 }
 
-void IntCmb(str20 &esp1, str20 &esp2){
-    str20 &aux = "********************";
+void IntCmb(str20 esp1, str20 esp2){
+    /**
+     * FIXME: hace que el programa retorne != 0
+     */
+
+    str20 aux = "********************";
     strcpy(aux, esp1);
     strcpy(esp1, esp2);
     strcpy(esp2, aux);
@@ -116,7 +126,7 @@ void IntCmb(str20 &esp1, str20 &esp2){
 
 void OrdxBur(Esp &vEsp, int carEsp){
     int k = 0;
-    bool ordenado = true;
+    bool ordenado;
     do{
         k++;
         ordenado = true;
@@ -144,7 +154,9 @@ main() {
 
     while( LeeEsp(fEsp, vEsp[carEsp]) )
         carEsp++;
+    mostrarEsp(vEsp, carEsp);
     OrdxBur(vEsp, carEsp);
+    mostrarEsp(vEsp, carEsp);
 
     inicTur(Turnos, nMaxEsp, nMaxTur, dias);
     //while( LeeTur(fTur, regTurno) ){
