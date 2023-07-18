@@ -126,6 +126,7 @@ void Obtener_solicitud_turnos(string turnos[18][8])
     }
     archivo.close();
 }
+
 int main()
 {
     // 1)Declaración e inicilización de variables:
