@@ -114,11 +114,7 @@ short cnvHhMm(short hhmm){
 }
 
 void IntCmb(str20 esp1, str20 esp2){
-    /**
-     * FIXME: hace que el programa retorne != 0
-     */
-
-    str20 aux = "********************";
+    str20 aux;
     strcpy(aux, esp1);
     strcpy(esp1, esp2);
     strcpy(esp2, aux);
@@ -131,7 +127,7 @@ void OrdxBur(Esp &vEsp, int carEsp){
         k++;
         ordenado = true;
 
-        for(int i = 0; i <= carEsp-k; i++){
+        for(int i = 0; i < carEsp-k; i++){
             if(strcmp(vEsp[i], vEsp[i+1]) > 0){
                 ordenado = false;
                 IntCmb(vEsp[i], vEsp[i+1]);
@@ -154,9 +150,7 @@ main() {
 
     while( LeeEsp(fEsp, vEsp[carEsp]) )
         carEsp++;
-    mostrarEsp(vEsp, carEsp);
     OrdxBur(vEsp, carEsp);
-    mostrarEsp(vEsp, carEsp);
 
     inicTur(Turnos, nMaxEsp, nMaxTur, dias);
     //while( LeeTur(fTur, regTurno) ){
