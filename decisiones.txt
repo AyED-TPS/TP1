@@ -1,7 +1,27 @@
 Decisiones a tomar:
--Abrir los archivos txt desde el main vs abrirlos dentro de cada función
--CamelCase vs Snake_case
+- Abrir los archivos txt desde el main vs abrirlos dentro de cada función.
+Abrirlos dentro de una funcion va en contra del diseño que se pide en el trabajo
+practico (pag. 1 abajo de todo).
+
+-camelCase vs Snake_case
+CamelCase es camelCase si no seria PascalCase... para mi, 
+eso lo votamos en una encuesta de whatsapp
+
 -Declaración de variables: x = 1 vs x{ 1 } (C++20 forma recomendada)
+Como dijo el profesor el primer dia, nosotros podemos usar otros compiladores, 
+pero luego todo debe compilar con Borland C++ 5.5, y, probé si aguantaba esa
+sintaxis y no, no la soporta :(
+
 -Como explicar las funciones: Pre y post condicion (caja negra) vs @return
+Me da igual, se me hace mas explicito @return, explicitar qué estrucutras o tipos
+son los parametros de entrada y salida, si devuelve o retorna y qué... hace lo mismo
+explicarlo de la otra forma... yo creo que hacen lo mismo pero de diferente forma...
+
 -Como tener el main en general: Considero que no deberian haber ni whiles ni abrir archivos en el main.
-Es mejor tener un main ordenado en donde solo haya declaración de variables y abajo se llamen funciones (mucho más leible y ordenado)
+si, para mi tambien, solo invocaciones de las funciones. En cuanto la apertura de
+archivos segun el diseño de la pag. 1 abajo de todo deberian abrirse antes de las 
+invocaciones y cerrarse despues de las invocaciones. Tambien me deja medio 
+ambiguo el tema de declarar las variables, los archivos que declaramos tambien
+son variables y al declararlas, lo abrimos, pero luego lo especifica por separado.
+
+Es mejor tener un main ordenado en donde solo haya declaración de variables y abajo se llamen funciones (mucho más legible y ordenado)
