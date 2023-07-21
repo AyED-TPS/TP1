@@ -1,0 +1,7 @@
+Decisiones a tomar:
+-Abrir los archivos txt desde el main vs abrirlos dentro de cada función
+-CamelCase vs Snake_case
+-Declaración de variables: x = 1 vs x{ 1 } (C++20 forma recomendada)
+-Como explicar las funciones: Pre y post condicion (caja negra) vs @return
+-Como tener el main en general: Considero que no deberian haber ni whiles ni abrir archivos en el main.
+Es mejor tener un main ordenado en donde solo haya declaración de variables y abajo se llamen funciones (mucho más leible y ordenado)
