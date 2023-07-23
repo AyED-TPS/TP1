@@ -16,13 +16,13 @@ const nChObS = 15;
 typedef char str15[nChObS+1];
 struct Tur{
     str15 obra;
-    short cred;
+    int cred;
 };
 struct regTur{
     str20 esp;
     int dia;
-    short hora;
-    short minu;
+    int hora;
+    int minu;
     Tur turno;
 };
 typedef Tur tenTur[nMaxEsp][nMaxTur][dias];
@@ -37,12 +37,12 @@ struct regMedicos{
 };
 typedef regMedicos Med[nMaxMed];
 
-void LeeMed(string medicos[36][5])
-{
-    /*
-    Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
-    Post condicion: El vector se llena con la informacion del archivo Medicos.txt y la funcion no devuelve nada.
-    */
+/*
+bool LeeMed(ifstream &fMed, Med medicos){
+
+    //Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
+    //Post condicion: El vector se llena con la informacion del archivo Medicos.txt y la funcion no devuelve nada.
+
 
     // Declaracion de iables
     ifstream archivo;
@@ -88,12 +88,10 @@ void LeeMed(string medicos[36][5])
     archivo.close();
 }
 
-void LeeSlc(string turnos[18][8])
-{
-    /*
-    Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
-    Post condicion: El vector se llena con la informacion del archivo SolicitudTurnos.txt y la funcion no devuelve nada.
-    */
+bool LeeTur2(ifstream &fTur, Tur turnos){
+
+    //Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
+    //Post condicion: El vector se llena con la informacion del archivo SolicitudTurnos.txt y la funcion no devuelve nada.
 
     // Declaracion de iables
     ifstream archivo;
@@ -158,33 +156,7 @@ void LeeSlc(string turnos[18][8])
     }
     archivo.close();
 }
-
-bool LeeEsp(ifstream &fEsp, str20 esp){
-/*
- * Lee una especialidad
- * @return
- * true: lectura exitosa
- * false: lectura no exitosa | fin de archivo
- */
-    fEsp.get(esp, nChEsp);
-    fEsp.ignore();
-
-    return fEsp.good();
-}
-
-bool LeeTur(ifstream &fTur, Tur turno){
-/*
- * Lee un turno
- * @return
- * true: lectura exitosa
- * false: lectura no exitosa | fin de archivo
- */
-    fTur.get(turno.obra, nChObS);
-    fTur >> turno.cred;
-    fTur.ignore();
-
-    return fTur.good();
-}
+*/
 
 void inicTur(tenTur &tTurnos, int nMaxEsp, int nMaxTur, int dias){
     for(int e = 0; e < nMaxEsp; e++){
@@ -196,30 +168,51 @@ void inicTur(tenTur &tTurnos, int nMaxEsp, int nMaxTur, int dias){
         }
     }
 }
+bool LeeTur(ifstream &fTur, regTur &turno){
+/**
+ * Lee un turno
+ * @return
+ * true: lectura exitosa
+ * false: lectura no exitosa | fin de archivo
+ */
 
-// para testear
+    fTur.get(turno.esp, nChEsp+1);
+    fTur.ignore();
+    fTur >> turno.dia >> turno.hora >> turno.minu;
+    fTur.ignore();
+    fTur.get(turno.turno.obra, nChObS+1);
+    fTur.ignore();
+    fTur >> turno.turno.cred;
+    fTur.ignore();
+
+    return fTur.good();
+}
 void mostrarTensor(tenTur tensor, int caras, int filas, int columnas){
     for(int a = 0; a < caras; a++){
         cout << "CARA " << a << ":" << endl;
         cout << "  |Obra social    |Creden" << endl;
         for(int b = 0; b < filas; b++){
+            cout << b;
             for(int c = 0; c < columnas; c++){
-                cout << tensor[a][b][c].obra << "|";
+                cout << "|" << tensor[a][b][c].obra << "|";
                 cout << tensor[a][b][c].cred << "|";
             }
             cout << endl;
         } cout << endl << endl;
     }
 }
-
-void mostrarEsp(Esp vEsp, int carEsp){
-    for(int i = 0; i < carEsp; i++){
-        cout << vEsp[i] << endl;
-    }
+void mostrarRegTur(regTur rTur){
+    cout << rTur.esp << " ";
+    cout << rTur.dia << " ";
+    cout << rTur.hora << " ";
+    cout << rTur.minu << " ";
+    cout << rTur.turno.obra << " ";
+    cout << rTur.turno.cred << " ";
+    cout << endl;
 }
 
 short cnvHhMm(short hhmm){
-/*
+/**
  * dada la hora en formato hhmm, devuelve la posicion del tensor de los turnos
  */
     const short hIni = 800;
@@ -234,13 +227,24 @@ short cnvHhMm(short hhmm){
     return ++pos;
 }
 
+bool LeeEsp(ifstream &fEsp, str20 esp){
+/**
+ * Lee una especialidad
+ * @return
+ * true: lectura exitosa
+ * false: lectura no exitosa | fin de archivo
+ */
+    fEsp.get(esp, nChEsp+1);
+    fEsp.ignore();
+
+    return fEsp.good();
+}
 void IntCmb(str20 esp1, str20 esp2){
     str20 aux;
     strcpy(aux, esp1);
     strcpy(esp1, esp2);
     strcpy(esp2, aux);
 }
-
 void OrdxBur(Esp vEsp, int carEsp){
     int k = 0;
     bool ordenado;
@@ -256,65 +260,93 @@ void OrdxBur(Esp vEsp, int carEsp){
         }
     } while(!ordenado);
 }
-
 void procEspecialidad(ifstream &fEsp, Esp vEsp, int *carEsp){
     *carEsp = 0;
     while( LeeEsp(fEsp, vEsp[*carEsp]) )
         (*carEsp)++;
     OrdxBur(vEsp, *carEsp);
 }
+void mostrarEsp(Esp vEsp, int carEsp){
+    for(int i = 0; i < carEsp; i++){
+        cout << "[" << i << "] " << vEsp[i]<< "|" << endl;
+    }
+    cout << "carEsp = " << carEsp << endl;
+}
+int busBin(Esp vEsp, str20 eClv, int ult){
+    int pri, med;
 
-int main() {
-//disenio main descrito en el tp
+    pri = 0;
+    while(pri <= ult){
+        med = (pri + ult) / 2;
+        if(strcmp(eClv, vEsp[med]) == 0)
+            return med;
+        else if(strcmp(eClv, vEsp[med]) > 0)
+            pri = med + 1;
+        else ult = med - 1;
+    }
+    return -1;
+}
+
+main() {
+
 //Declarar las variables utilizadas en el bloque main().
     //Especialidades
     Esp vEsp;
     int *carEsp;
 
-//Abrir todos los archivos
-ifstream fEsp("Especialidades.Txt");
+    //Turnos
+    regTur rTur;
+    tenTur tTur;
+    int carTur = 0;
 
     //Medicos
     const int cantidad_medicos = 36;
     const int atributos_medico = 5;
     static string medicos[cantidad_medicos][atributos_medico];
 
-    //Turnos
-    const int cantidad_turnos = 18;
-    const int atributos_turnos = 8;
-    static string turnos[cantidad_turnos][atributos_turnos];
+//    const int cantidad_turnos = 18;
+//    const int atributos_turnos = 8;
+//    static string turnos[cantidad_turnos][atributos_turnos];
 
-    //Turnos
-    //ifstream fTur("TurnosDiaHora.Txt");
-    //regTur regTurno;
-    //tenTur Turnos;
-    //int carTur = 0;
+//Abrir todos los archivos
+    ifstream fEsp("Especialidades.Txt");
+    ifstream fTur("TurnosDiaHora.Txt");
 
     procEspecialidad(fEsp, vEsp, carEsp);
+    mostrarEsp(vEsp, *carEsp);
 
-    LeeMed(medicos);
-    cout << "Medicos: " << endl;
-    for(int i = 0; i < 36; i++){
-        for(int j = 0; j < 5; j++){
-            cout << medicos[i][j];
-        }
-        cout << endl;
+    int posEsp;
+    int posHora;    int hhmm;
+
+    inicTur(tTur, nMaxEsp, nMaxTur, dias);
+    while( LeeTur(fTur, rTur)){
+        posEsp = busBin(vEsp, rTur.esp, *carEsp);
+        //hhmm = rTur.hora*100 + rTur.minu;
+        //posHora = cnvHhMm(hhmm);
+        cout << "[" << posEsp << "]";
+        cout << rTur.esp << endl;
+//          cout << "[" << posHora << "]";
+//        cout << "[" << rTur.dia-1 << "]" << endl;
+    //    strcpy(tTur[posEsp][posHora][rTur.dia-1].obra, rTur.turno.obra);
+    //    tTur[posEsp][posHora][rTur.dia-1].cred = rTur.turno.cred;
+        carTur++;
     }
-
-    //LeeSlc(turnos); // ERROR retorno de programa distinto de cero
-    //cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
-
-    //inicTur(Turnos, nMaxEsp, nMaxTur, dias);
-    //while( LeeTur(fTur, regTurno) ){
-        // lo dejo amontonado para que se note, aunque no se si lo hace mas o menos intuitivo
-      //  strcpy(tenTur[BusBin(regTurno.esp)][cnvHhMm(regTurno.hora*100 + regTurno.minu)][regTurno.dia].obra, regTurno.Tur.obra)
-      // carTur++;
-    //}
-    //mostrarTensor(Turnos, nMaxEsp, nMaxTur, dias);
+    //mostrarTensor(tTur, nMaxEsp, nMaxTur, dias);
 
 //cerrar todos los archivos
     fEsp.close();
-    //fTur.close();
+    fTur.close();
 
+    //LeeTur(turnos); // ERROR retorno de programa distinto de cero
+    //cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
+
+//    LeeMed(medicos);
+//    cout << "Medicos: " << endl;
+//    for(int i = 0; i < 36; i++){
+//        for(int j = 0; j < 5; j++){
+//            cout << medicos[i][j];
+//        }
+//        cout << endl;
+//    }
     return 0;
 }
