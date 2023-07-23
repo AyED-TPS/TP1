@@ -16,31 +16,41 @@ const nChObS = 15;
 typedef char str15[nChObS+1];
 struct Tur{
     str15 obra;
-    short cred;
+    int cred;
 };
 struct regTur{
     str20 esp;
     int dia;
-    short hora;
-    short minu;
+    int hora;
+    int minu;
     Tur turno;
 };
 typedef Tur tenTur[nMaxEsp][nMaxTur][dias];
 
+//Turnos Slc
+struct regSlc{
+    str20 apeNom;
+    str20 esp;
+    int dia;
+    char chTur;
+    Tur turno;
+};
+
 //Medicos
-struct regMedicos{
+const int nMaxMed = 60;
+struct regMed{
     str20 apeNom;
     short matri;
     str20 esp;
     char turno;
 };
+typedef regMed Med[nMaxMed];
 
-void Obtener_medicos(string medicos[36][5])
-{
-    /*
-    Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
-    Post condicion: El vector se llena con la informacion del archivo Medicos.txt y la funcion no devuelve nada.
-    */
+bool LeeMed(ifstream &fMed, regMed rMed){
+/*
+    //Pre condicion: La funcion recibe un vector de dos dimensiones vacio. // un registro de medico
+    //Post condicion: El vector se llena con la informacion del archivo Medicos.txt y la funcion no devuelve nada.// vuelva un registro del archivo al registro de Medico y devuelve true si la lectura fue exitosa
+
 
     // Declaracion de iables
     ifstream archivo;
@@ -83,16 +93,13 @@ void Obtener_medicos(string medicos[36][5])
         contador_atributos = 0;
         contador_medicos++;
     }
-    archivo.close();
+    archivo.close();*/
 }
 
-// X Obtener_solicitud_turnos()
-void Obtener_solicitud_turnos(string turnos[18][8])
-{
-    /*
-    Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
-    Post condicion: El vector se llena con la informacion del archivo SolicitudTurnos.txt y la funcion no devuelve nada.
-    */
+bool LeeSlc(ifstream &fTur, Tur turnos){
+
+    //Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
+    //Post condicion: El vector se llena con la informacion del archivo SolicitudTurnos.txt y la funcion no devuelve nada.
 
     // Declaracion de iables
     ifstream archivo;
@@ -158,32 +165,6 @@ void Obtener_solicitud_turnos(string turnos[18][8])
     archivo.close();
 }
 
-bool LeeEsp(ifstream &fEsp, str20 esp){
-/*
- * Lee una especialidad
- * @return
- * true: lectura exitosa
- * false: lectura no exitosa | fin de archivo
- */
-    fEsp.get(esp, nChEsp);
-    fEsp.ignore();
-
-    return fEsp.good();
-}
-
-bool LeeTur(ifstream &fTur, Tur turno){
-/*
- * Lee un turno
- * @return
- * true: lectura exitosa
- * false: lectura no exitosa | fin de archivo
- */
-    fTur.get(turno.obra, nChObS);
-    fTur >> turno.cred;
-    fTur.ignore();
-
-    return fTur.good();
-}
 
 void inicTur(tenTur &tTurnos, int nMaxEsp, int nMaxTur, int dias){
     for(int e = 0; e < nMaxEsp; e++){
@@ -195,30 +176,50 @@ void inicTur(tenTur &tTurnos, int nMaxEsp, int nMaxTur, int dias){
         }
     }
 }
+bool LeeTur(ifstream &fTur, regTur &turno){
+/**
+ * Lee un turno
+ * @return
+ * true: lectura exitosa
+ * false: lectura no exitosa | fin de archivo
+ */
 
-// para testear
+    fTur.get(turno.esp, nChEsp+1);
+    fTur.ignore();
+    fTur >> turno.dia >> turno.hora >> turno.minu;
+    fTur.ignore();
+    fTur.get(turno.turno.obra, nChObS+1);
+    fTur.ignore();
+    fTur >> turno.turno.cred;
+    fTur.ignore();
+
+    return fTur.good();
+}
 void mostrarTensor(tenTur tensor, int caras, int filas, int columnas){
     for(int a = 0; a < caras; a++){
         cout << "CARA " << a << ":" << endl;
         cout << "  |Obra social    |Creden" << endl;
         for(int b = 0; b < filas; b++){
+            cout << b;
             for(int c = 0; c < columnas; c++){
-                cout << tensor[a][b][c].obra << "|";
+                cout << "|" << tensor[a][b][c].obra << "|";
                 cout << tensor[a][b][c].cred << "|";
             }
             cout << endl;
         } cout << endl << endl;
     }
 }
-
-void mostrarEsp(Esp vEsp, int carEsp){
-    for(int i = 0; i < carEsp; i++){
-        cout << vEsp[i] << endl;
-    }
+void mostrarRegTur(regTur rTur){
+    cout << rTur.esp << " ";
+    cout << rTur.dia << " ";
+    cout << rTur.hora << " ";
+    cout << rTur.minu << " ";
+    cout << rTur.turno.obra << " ";
+    cout << rTur.turno.cred << " ";
+    cout << endl;
 }
-
 short cnvHhMm(short hhmm){
-/*
+/**
  * dada la hora en formato hhmm, devuelve la posicion del tensor de los turnos
  */
     const short hIni = 800;
@@ -233,13 +234,24 @@ short cnvHhMm(short hhmm){
     return ++pos;
 }
 
+bool LeeEsp(ifstream &fEsp, str20 esp){
+/**
+ * Lee una especialidad
+ * @return
+ * true: lectura exitosa
+ * false: lectura no exitosa | fin de archivo
+ */
+    fEsp.get(esp, nChEsp+1);
+    fEsp.ignore();
+
+    return fEsp.good();
+}
 void IntCmb(str20 esp1, str20 esp2){
     str20 aux;
     strcpy(aux, esp1);
     strcpy(esp1, esp2);
     strcpy(esp2, aux);
 }
-
 void OrdxBur(Esp vEsp, int carEsp){
     int k = 0;
     bool ordenado;
@@ -255,54 +267,102 @@ void OrdxBur(Esp vEsp, int carEsp){
         }
     } while(!ordenado);
 }
-
 void procEspecialidad(ifstream &fEsp, Esp vEsp, int *carEsp){
     *carEsp = 0;
     while( LeeEsp(fEsp, vEsp[*carEsp]) )
         (*carEsp)++;
     OrdxBur(vEsp, *carEsp);
 }
+void mostrarEsp(Esp vEsp, int carEsp){
+    for(int i = 0; i < carEsp; i++){
+        cout << "[" << i << "] " << vEsp[i]<< "|" << endl;
+    }
+    cout << "carEsp = " << carEsp << endl;
+}
+int busBin(Esp vEsp, str20 eClv, int ult){
+    int pri, med;
 
-int main() {
+    pri = 0;
+    while(pri <= ult){
+        med = (pri + ult) / 2;
+        if(strcmp(eClv, vEsp[med]) == 0)
+            return med;
+        else if(strcmp(eClv, vEsp[med]) > 0)
+            pri = med + 1;
+        else ult = med - 1;
+    }
+    return -1;
+}
+void procTurnos(ifstream &fTur, tenTur &tTur, regTur rTur, Esp vEsp, int carEsp, int *carTur){
+    *carTur = 0;
+    inicTur(tTur, nMaxEsp, nMaxTur, dias);
+    while( LeeTur(fTur, rTur)){
+        strcpy(tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].obra, rTur.turno.obra);
+        tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].cred = rTur.turno.cred;
+        (*carTur)++;
+    }
+}
 
-    //Medicos
-    const int cantidad_medicos = 36;
-    const int atributos_medico = 5;
-    static string medicos[cantidad_medicos][atributos_medico];
+void procMedicos(ifstream &fMed, Med vMed, int *carMed){
+    *carMed = 0;
+    while(LeeMed(fMed, vMed[carMed])){
+        (*carMed)++;
+    }
+}
 
-    //Turnos
-    const int cantidad_turnos = 18;
-    const int atributos_turnos = 8;
-    static string turnos[cantidad_turnos][atributos_turnos];
+main() {
+
+//Declarar las variables utilizadas en el bloque main().
 
     //Especialidades
-    ifstream fEsp("Especialidades.Txt");
     Esp vEsp;
     int *carEsp;
 
     //Turnos
-    //ifstream fTur("TurnosDiaHora.Txt");
-    //regTur regTurno;
-    //tenTur Turnos;
-    //int carTur = 0;
+    regTur rTur;
+    tenTur tTur;
+    int *carTur;
 
+    //Medicos
+    Med vMed;
+    int *carMed;
+
+//Abrir todos los archivos
+    ifstream fEsp("Especialidades.Txt");
+    ifstream fTur("TurnosDiaHora.Txt");
+    ifstream fMed("Medicos.Txt");
+
+    procMedicos(fMed, vMed, carMed);
     procEspecialidad(fEsp, vEsp, carEsp);
+    procTurnos(fTur, tTur, rTur, vEsp, *carEsp, carTur);
+    //lstTurnos();
+    //procTurnos();
+    //lstTurnos();
 
-    //inicTur(Turnos, nMaxEsp, nMaxTur, dias);
-    //while( LeeTur(fTur, regTurno) ){
-        // lo dejo amontonado para que se note, aunque no se si lo hace mas o menos intuitivo
-      //  strcpy(tenTur[BusBin(regTurno.esp)][cnvHhMm(regTurno.hora*100 + regTurno.minu)][regTurno.dia].obra, regTurno.Tur.obra)
-      // carTur++;
-    //}
-
-    //mostrarTensor(Turnos, nMaxEsp, nMaxTur, dias);
-
+//cerrar todos los archivos
     fEsp.close();
-    //fTur.close();
-    //Obtener_medicos(medicos);
-    //cout << "Testeo: " << medicos[3][1] << endl; //Borrar en la version final.
-    //Obtener_solicitud_turnos(turnos); // ERROR retorno de programa distinto de cero
-    //cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
+    fTur.close();
+    fMed.close();
 
+//    Medicos
+//    const int cantidad_medicos = 36;
+//    const int atributos_medico = 5;
+//    static string medicos[cantidad_medicos][atributos_medico];
+
+//    Turnos
+//    const int cantidad_turnos = 18;
+//    const int atributos_turnos = 8;
+//    static string turnos[cantidad_turnos][atributos_turnos];
+
+//    LeeSlc(turnos); // ERROR retorno de programa distinto de cero
+//    cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
+//    LeeMed(medicos);
+//    cout << "Medicos: " << endl;
+//    for(int i = 0; i < 36; i++){
+//        for(int j = 0; j < 5; j++){
+//            cout << medicos[i][j];
+//        }
+//        cout << endl;
+//    }
     return 0;
 }
