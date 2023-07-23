@@ -35,8 +35,128 @@ struct regMedicos{
     char turno;
 };
 
-// X Obtener_medicos()
+void Obtener_medicos(string medicos[36][5])
+{
+    /*
+    Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
+    Post condicion: El vector se llena con la informacion del archivo Medicos.txt y la funcion no devuelve nada.
+    */
+
+    // Declaracion de iables
+    ifstream archivo;
+    string linea_archivo;
+    int contador_medicos = 0;
+    int contador_atributos = 0;
+
+    // Manipulacion del archivo Medicos.txt
+    archivo.open("Medicos.txt");
+    while (archivo.good())
+    {
+        //Declaracion de iables dentro del ciclo while.
+        getline(archivo, linea_archivo);
+        char separador;
+        int posicion_letra = 0;
+        string palabra;
+        int tamanio_linea = linea_archivo.size();
+
+        while (linea_archivo[posicion_letra] != '\0') //  '\0.' es el caracter nulo en la tabla ASCII.
+        {
+            if (linea_archivo[posicion_letra] != separador)
+            {
+                palabra += linea_archivo[posicion_letra];
+            }
+            else
+            {
+                while (linea_archivo[posicion_letra + 1] == ' ')
+                    posicion_letra++;
+
+                //cout << palabra << endl; //Borrar en la version final del trabajo
+                medicos[contador_medicos][contador_atributos] = palabra;
+                palabra.clear();
+                contador_atributos++;
+
+            }
+            posicion_letra++;
+        }
+        //cout << palabra << endl << "------------------" << endl; //Borrar en la version final del trabajo
+        medicos[contador_medicos][contador_atributos] = palabra;
+        contador_atributos = 0;
+        contador_medicos++;
+    }
+    archivo.close();
+}
+
 // X Obtener_solicitud_turnos()
+void Obtener_solicitud_turnos(string turnos[18][8])
+{
+    /*
+    Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
+    Post condicion: El vector se llena con la informacion del archivo SolicitudTurnos.txt y la funcion no devuelve nada.
+    */
+
+    // Declaracion de iables
+    ifstream archivo;
+    string linea_archivo;
+    int contador_turnos = 0;
+    int contador_atributos = 0;
+
+    // Manipulacion del archivo SolicitudTurnos.txt
+    archivo.open("SolicitudTurnos.txt");
+    while (archivo.good())
+    {
+        //Declaracion de iables dentro del ciclo while.
+        getline(archivo, linea_archivo);
+        char separador;
+        int posicion_letra = 0;
+        string palabra;
+        int tamanio_linea = linea_archivo.size();
+
+        while (linea_archivo[posicion_letra] != '\0') //  '\0.' es el caracter nulo en la tabla ASCII.
+        {
+            if (linea_archivo[posicion_letra] != separador)
+            {
+                palabra += linea_archivo[posicion_letra];
+            }
+            else
+            {
+                //Checkear el if si funciona correctamente.
+                if (contador_atributos == 3 && linea_archivo[posicion_letra + 1] != ' ')
+                {
+                    palabra += linea_archivo[posicion_letra];
+                    posicion_letra++;
+                    while (linea_archivo[posicion_letra] != ' ')
+                    {
+                        palabra += linea_archivo[posicion_letra];
+                        posicion_letra++;
+                    }
+                }
+                if (contador_atributos == 5 && linea_archivo[posicion_letra + 1] != ' ')
+                {
+                    palabra += linea_archivo[posicion_letra];
+                    posicion_letra++;
+                    while (linea_archivo[posicion_letra] != ' ')
+                    {
+                        palabra += linea_archivo[posicion_letra];
+                        posicion_letra++;
+                    }
+                }
+                while (linea_archivo[posicion_letra + 1] == ' ')
+                    posicion_letra++;
+
+                turnos[contador_turnos][contador_atributos] = palabra;
+                palabra.clear();
+                contador_atributos++;
+
+            }
+            posicion_letra++;
+        }
+        //cout << palabra << endl << "------------------" << endl; //Borrar en la version final del trabajo
+        turnos[contador_turnos][contador_atributos] = palabra;
+        contador_atributos = 0;
+        contador_turnos++;
+    }
+    archivo.close();
+}
 
 bool LeeEsp(ifstream &fEsp, str20 esp){
 /*
@@ -91,6 +211,12 @@ void mostrarTensor(tenTur tensor, int caras, int filas, int columnas){
     }
 }
 
+void mostrarEsp(Esp vEsp, int carEsp){
+    for(int i = 0; i < carEsp; i++){
+        cout << vEsp[i] << endl;
+    }
+}
+
 short cnvHhMm(short hhmm){
 /*
  * dada la hora en formato hhmm, devuelve la posicion del tensor de los turnos
@@ -107,21 +233,21 @@ short cnvHhMm(short hhmm){
     return ++pos;
 }
 
-void IntCmb(str20 &esp1, str20 &esp2){
-    str20 &aux = "********************";
+void IntCmb(str20 esp1, str20 esp2){
+    str20 aux;
     strcpy(aux, esp1);
     strcpy(esp1, esp2);
     strcpy(esp2, aux);
 }
 
-void OrdxBur(Esp &vEsp, int carEsp){
+void OrdxBur(Esp vEsp, int carEsp){
     int k = 0;
-    bool ordenado = true;
+    bool ordenado;
     do{
         k++;
         ordenado = true;
 
-        for(int i = 0; i <= carEsp-k; i++){
+        for(int i = 0; i < carEsp-k; i++){
             if(strcmp(vEsp[i], vEsp[i+1]) > 0){
                 ordenado = false;
                 IntCmb(vEsp[i], vEsp[i+1]);
@@ -130,23 +256,39 @@ void OrdxBur(Esp &vEsp, int carEsp){
     } while(!ordenado);
 }
 
-main() {
+void procEspecialidad(ifstream &fEsp, Esp vEsp, int *carEsp){
+    *carEsp = 0;
+    while( LeeEsp(fEsp, vEsp[*carEsp]) )
+        (*carEsp)++;
+    OrdxBur(vEsp, *carEsp);
+}
+
+int main() {
+
+    //Medicos
+    const int cantidad_medicos = 36;
+    const int atributos_medico = 5;
+    static string medicos[cantidad_medicos][atributos_medico];
+
+    //Turnos
+    const int cantidad_turnos = 18;
+    const int atributos_turnos = 8;
+    static string turnos[cantidad_turnos][atributos_turnos];
 
     //Especialidades
-        ifstream fEsp("Especialidades.Txt");
-        Esp vEsp;
-        int carEsp = 0;
+    ifstream fEsp("Especialidades.Txt");
+    Esp vEsp;
+    int *carEsp;
+
     //Turnos
-        ifstream fTur("TurnosDiaHora.Txt");
-        regTur regTurno;
-        tenTur Turnos;
-        //int carTur = 0;
+    //ifstream fTur("TurnosDiaHora.Txt");
+    //regTur regTurno;
+    //tenTur Turnos;
+    //int carTur = 0;
 
-    while( LeeEsp(fEsp, vEsp[carEsp]) )
-        carEsp++;
-    OrdxBur(vEsp, carEsp);
+    procEspecialidad(fEsp, vEsp, carEsp);
 
-    inicTur(Turnos, nMaxEsp, nMaxTur, dias);
+    //inicTur(Turnos, nMaxEsp, nMaxTur, dias);
     //while( LeeTur(fTur, regTurno) ){
         // lo dejo amontonado para que se note, aunque no se si lo hace mas o menos intuitivo
       //  strcpy(tenTur[BusBin(regTurno.esp)][cnvHhMm(regTurno.hora*100 + regTurno.minu)][regTurno.dia].obra, regTurno.Tur.obra)
@@ -157,6 +299,10 @@ main() {
 
     fEsp.close();
     //fTur.close();
+    //Obtener_medicos(medicos);
+    //cout << "Testeo: " << medicos[3][1] << endl; //Borrar en la version final.
+    //Obtener_solicitud_turnos(turnos); // ERROR retorno de programa distinto de cero
+    //cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
 
     return 0;
 }
