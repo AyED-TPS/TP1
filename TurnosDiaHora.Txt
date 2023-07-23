@@ -34,7 +34,6 @@ Neurologia           11 17 30 Accord Salud    245793
 Neurologia           11 19 30 Accord Salud    714493
 Endocrinologia       14 14 00 Apres Salud     123456
 Nefrologia           16 19 30 Casa Salud      789013
-Otorrinolaringologia 15 13 30 Bristo Medicine 234567
 Traumatologia         1 15 00 Accord Salud    114730
 Traumatologia         1 10 30 Ioma            140178
 Traumatologia         3 10 30 Accord Salud    104430
