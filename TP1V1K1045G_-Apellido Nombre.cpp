@@ -35,30 +35,29 @@ struct regMedicos{
     char turno;
 };
 
-// X Obtener_medicos()
 void Obtener_medicos(string medicos[36][5])
 {
     /*
-    Pre condición: La función recibe un vector de dos dimensiones vacio.
-    Post condición: El vector se llena con la información del archivo Medicos.txt y la función no devuelve nada.
+    Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
+    Post condicion: El vector se llena con la informacion del archivo Medicos.txt y la funcion no devuelve nada.
     */
 
-    // Declaración de variables
+    // Declaracion de variables
     ifstream archivo;
     string linea_archivo;
-    int contador_medicos{ 0 };
-    int contador_atributos{ 0 };
+    int contador_medicos = 0;
+    int contador_atributos = 0;
 
-    // Manipulación del archivo Medicos.txt
+    // Manipulacion del archivo Medicos.txt
     archivo.open("Medicos.txt");
     while (archivo.good())
     {
-        //Declaración de variables dentro del ciclo while.
+        //Declaracion de variables dentro del ciclo while.
         getline(archivo, linea_archivo);
-        char separador{ ' ' };
-        int posicion_letra{ 0 };
+        char separador;
+        int posicion_letra = 0;
         string palabra;
-        int tamaño_linea = linea_archivo.size();
+        int tamanio_linea = linea_archivo.size();
 
         while (linea_archivo[posicion_letra] != '\0') //  '\0.' es el caracter nulo en la tabla ASCII.
         {
@@ -71,7 +70,7 @@ void Obtener_medicos(string medicos[36][5])
                 while (linea_archivo[posicion_letra + 1] == ' ')
                     posicion_letra++;
 
-                //cout << palabra << endl; //Borrar en la versión final del trabajo
+                //cout << palabra << endl; //Borrar en la version final del trabajo
                 medicos[contador_medicos][contador_atributos] = palabra;
                 palabra.clear();
                 contador_atributos++;
@@ -79,7 +78,7 @@ void Obtener_medicos(string medicos[36][5])
             }
             posicion_letra++;
         }
-        //cout << palabra << endl << "------------------" << endl; //Borrar en la versión final del trabajo
+        //cout << palabra << endl << "------------------" << endl; //Borrar en la version final del trabajo
         medicos[contador_medicos][contador_atributos] = palabra;
         contador_atributos = 0;
         contador_medicos++;
@@ -91,26 +90,26 @@ void Obtener_medicos(string medicos[36][5])
 void Obtener_solicitud_turnos(string turnos[18][8])
 {
     /*
-    Pre condición: La función recibe un vector de dos dimensiones vacio.
-    Post condición: El vector se llena con la información del archivo SolicitudTurnos.txt y la función no devuelve nada.
+    Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
+    Post condicion: El vector se llena con la informacion del archivo SolicitudTurnos.txt y la funcion no devuelve nada.
     */
 
-    // Declaración de variables
+    // Declaracion de variables
     ifstream archivo;
     string linea_archivo;
-    int contador_turnos{ 0 };
-    int contador_atributos{ 0 };
+    int contador_turnos = 0;
+    int contador_atributos = 0;
 
-    // Manipulación del archivo SolicitudTurnos.txt
+    // Manipulacion del archivo SolicitudTurnos.txt
     archivo.open("SolicitudTurnos.txt");
     while (archivo.good())
     {
-        //Declaración de variables dentro del ciclo while.
+        //Declaracion de variables dentro del ciclo while.
         getline(archivo, linea_archivo);
-        char separador{ ' ' };
-        int posicion_letra{ 0 };
+        char separador;
+        int posicion_letra = 0;
         string palabra;
-        int tamaño_linea = linea_archivo.size();
+        int tamanio_linea = linea_archivo.size();
 
         while (linea_archivo[posicion_letra] != '\0') //  '\0.' es el caracter nulo en la tabla ASCII.
         {
@@ -120,7 +119,7 @@ void Obtener_solicitud_turnos(string turnos[18][8])
             }
             else
             {
-                //Checkear el if si funciona correctamente.  
+                //Checkear el if si funciona correctamente.
                 if (contador_atributos == 3 && linea_archivo[posicion_letra + 1] != ' ')
                 {
                     palabra += linea_archivo[posicion_letra];
@@ -144,7 +143,6 @@ void Obtener_solicitud_turnos(string turnos[18][8])
                 while (linea_archivo[posicion_letra + 1] == ' ')
                     posicion_letra++;
 
-                //cout << palabra << endl; //Borrar en la versión final del trabajo
                 turnos[contador_turnos][contador_atributos] = palabra;
                 palabra.clear();
                 contador_atributos++;
@@ -152,7 +150,7 @@ void Obtener_solicitud_turnos(string turnos[18][8])
             }
             posicion_letra++;
         }
-        //cout << palabra << endl << "------------------" << endl; //Borrar en la versión final del trabajo
+        //cout << palabra << endl << "------------------" << endl; //Borrar en la version final del trabajo
         turnos[contador_turnos][contador_atributos] = palabra;
         contador_atributos = 0;
         contador_turnos++;
@@ -242,7 +240,7 @@ void IntCmb(str20 esp1, str20 esp2){
     strcpy(esp2, aux);
 }
 
-void OrdxBur(Esp &vEsp, int carEsp){
+void OrdxBur(Esp vEsp, int carEsp){
     int k = 0;
     bool ordenado;
     do{
@@ -260,14 +258,14 @@ void OrdxBur(Esp &vEsp, int carEsp){
 
 int main() {
 
-    //Médicos
-    const int cantidad_medicos{ 36 };
-    const int atributos_medico{ 5 };
+    //Medicos
+    const int cantidad_medicos = 36;
+    const int atributos_medico = 5;
     static string medicos[cantidad_medicos][atributos_medico];
 
     //Turnos
-    const int cantidad_turnos{ 18 };
-    const int atributos_turnos{ 8 };
+    const int cantidad_turnos = 18;
+    const int atributos_turnos = 8;
     static string turnos[cantidad_turnos][atributos_turnos];
 
     //Especialidades
@@ -296,9 +294,9 @@ int main() {
     fEsp.close();
     //fTur.close();
     Obtener_medicos(medicos);
-    cout << "Testeo: " << medicos[3][1] << endl; //Borrar en la versión final.
-    Obtener_solicitud_turnos(turnos);
-    cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la versión final.
+    cout << "Testeo: " << medicos[3][1] << endl; //Borrar en la version final.
+    //Obtener_solicitud_turnos(turnos); // ERROR retorno de programa distinto de cero
+    cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
 
     return 0;
 }
