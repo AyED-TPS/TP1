@@ -28,14 +28,16 @@ struct regTur{
 typedef Tur tenTur[nMaxEsp][nMaxTur][dias];
 
 //Medicos
+const int nMaxMed = 60;
 struct regMedicos{
     str20 apeNom;
     short matri;
     str20 esp;
     char turno;
 };
+typedef regMedicos Med[nMaxMed];
 
-void Obtener_medicos(string medicos[36][5])
+void LeeMed(string medicos[36][5])
 {
     /*
     Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
@@ -86,8 +88,7 @@ void Obtener_medicos(string medicos[36][5])
     archivo.close();
 }
 
-// X Obtener_solicitud_turnos()
-void Obtener_solicitud_turnos(string turnos[18][8])
+void LeeSlc(string turnos[18][8])
 {
     /*
     Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
@@ -264,6 +265,14 @@ void procEspecialidad(ifstream &fEsp, Esp vEsp, int *carEsp){
 }
 
 int main() {
+//disenio main descrito en el tp
+//Declarar las variables utilizadas en el bloque main().
+    //Especialidades
+    Esp vEsp;
+    int *carEsp;
+
+//Abrir todos los archivos
+ifstream fEsp("Especialidades.Txt");
 
     //Medicos
     const int cantidad_medicos = 36;
@@ -275,11 +284,6 @@ int main() {
     const int atributos_turnos = 8;
     static string turnos[cantidad_turnos][atributos_turnos];
 
-    //Especialidades
-    ifstream fEsp("Especialidades.Txt");
-    Esp vEsp;
-    int *carEsp;
-
     //Turnos
     //ifstream fTur("TurnosDiaHora.Txt");
     //regTur regTurno;
@@ -288,21 +292,29 @@ int main() {
 
     procEspecialidad(fEsp, vEsp, carEsp);
 
+    LeeMed(medicos);
+    cout << "Medicos: " << endl;
+    for(int i = 0; i < 36; i++){
+        for(int j = 0; j < 5; j++){
+            cout << medicos[i][j];
+        }
+        cout << endl;
+    }
+
+    //LeeSlc(turnos); // ERROR retorno de programa distinto de cero
+    //cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
+
     //inicTur(Turnos, nMaxEsp, nMaxTur, dias);
     //while( LeeTur(fTur, regTurno) ){
         // lo dejo amontonado para que se note, aunque no se si lo hace mas o menos intuitivo
       //  strcpy(tenTur[BusBin(regTurno.esp)][cnvHhMm(regTurno.hora*100 + regTurno.minu)][regTurno.dia].obra, regTurno.Tur.obra)
       // carTur++;
     //}
-
     //mostrarTensor(Turnos, nMaxEsp, nMaxTur, dias);
 
+//cerrar todos los archivos
     fEsp.close();
     //fTur.close();
-    //Obtener_medicos(medicos);
-    //cout << "Testeo: " << medicos[3][1] << endl; //Borrar en la version final.
-    //Obtener_solicitud_turnos(turnos); // ERROR retorno de programa distinto de cero
-    //cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
 
     return 0;
 }
