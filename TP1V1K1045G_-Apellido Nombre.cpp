@@ -42,7 +42,7 @@ void Obtener_medicos(string medicos[36][5])
     Post condicion: El vector se llena con la informacion del archivo Medicos.txt y la funcion no devuelve nada.
     */
 
-    // Declaracion de variables
+    // Declaracion de iables
     ifstream archivo;
     string linea_archivo;
     int contador_medicos = 0;
@@ -52,7 +52,7 @@ void Obtener_medicos(string medicos[36][5])
     archivo.open("Medicos.txt");
     while (archivo.good())
     {
-        //Declaracion de variables dentro del ciclo while.
+        //Declaracion de iables dentro del ciclo while.
         getline(archivo, linea_archivo);
         char separador;
         int posicion_letra = 0;
@@ -94,7 +94,7 @@ void Obtener_solicitud_turnos(string turnos[18][8])
     Post condicion: El vector se llena con la informacion del archivo SolicitudTurnos.txt y la funcion no devuelve nada.
     */
 
-    // Declaracion de variables
+    // Declaracion de iables
     ifstream archivo;
     string linea_archivo;
     int contador_turnos = 0;
@@ -104,7 +104,7 @@ void Obtener_solicitud_turnos(string turnos[18][8])
     archivo.open("SolicitudTurnos.txt");
     while (archivo.good())
     {
-        //Declaracion de variables dentro del ciclo while.
+        //Declaracion de iables dentro del ciclo while.
         getline(archivo, linea_archivo);
         char separador;
         int posicion_letra = 0;
@@ -256,6 +256,13 @@ void OrdxBur(Esp vEsp, int carEsp){
     } while(!ordenado);
 }
 
+void procEspecialidad(ifstream &fEsp, Esp vEsp, int *carEsp){
+    *carEsp = 0;
+    while( LeeEsp(fEsp, vEsp[*carEsp]) )
+        (*carEsp)++;
+    OrdxBur(vEsp, *carEsp);
+}
+
 int main() {
 
     //Medicos
@@ -271,18 +278,17 @@ int main() {
     //Especialidades
     ifstream fEsp("Especialidades.Txt");
     Esp vEsp;
-    int carEsp = 0;
+    int *carEsp;
+
     //Turnos
-    ifstream fTur("TurnosDiaHora.Txt");
-    regTur regTurno;
-    tenTur Turnos;
+    //ifstream fTur("TurnosDiaHora.Txt");
+    //regTur regTurno;
+    //tenTur Turnos;
     //int carTur = 0;
 
-    while( LeeEsp(fEsp, vEsp[carEsp]) )
-        carEsp++;
-    OrdxBur(vEsp, carEsp);
+    procEspecialidad(fEsp, vEsp, carEsp);
 
-    inicTur(Turnos, nMaxEsp, nMaxTur, dias);
+    //inicTur(Turnos, nMaxEsp, nMaxTur, dias);
     //while( LeeTur(fTur, regTurno) ){
         // lo dejo amontonado para que se note, aunque no se si lo hace mas o menos intuitivo
       //  strcpy(tenTur[BusBin(regTurno.esp)][cnvHhMm(regTurno.hora*100 + regTurno.minu)][regTurno.dia].obra, regTurno.Tur.obra)
@@ -293,10 +299,10 @@ int main() {
 
     fEsp.close();
     //fTur.close();
-    Obtener_medicos(medicos);
-    cout << "Testeo: " << medicos[3][1] << endl; //Borrar en la version final.
+    //Obtener_medicos(medicos);
+    //cout << "Testeo: " << medicos[3][1] << endl; //Borrar en la version final.
     //Obtener_solicitud_turnos(turnos); // ERROR retorno de programa distinto de cero
-    cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
+    //cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
 
     return 0;
 }
