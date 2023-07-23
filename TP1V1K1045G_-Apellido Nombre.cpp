@@ -27,21 +27,29 @@ struct regTur{
 };
 typedef Tur tenTur[nMaxEsp][nMaxTur][dias];
 
+//Turnos Slc
+struct regSlc{
+    str20 apeNom;
+    str20 esp;
+    int dia;
+    char chTur;
+    Tur turno;
+};
+
 //Medicos
 const int nMaxMed = 60;
-struct regMedicos{
+struct regMed{
     str20 apeNom;
     short matri;
     str20 esp;
     char turno;
 };
-typedef regMedicos Med[nMaxMed];
+typedef regMed Med[nMaxMed];
 
+bool LeeMed(ifstream &fMed, regMed rMed){
 /*
-bool LeeMed(ifstream &fMed, Med medicos){
-
-    //Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
-    //Post condicion: El vector se llena con la informacion del archivo Medicos.txt y la funcion no devuelve nada.
+    //Pre condicion: La funcion recibe un vector de dos dimensiones vacio. // un registro de medico
+    //Post condicion: El vector se llena con la informacion del archivo Medicos.txt y la funcion no devuelve nada.// vuelva un registro del archivo al registro de Medico y devuelve true si la lectura fue exitosa
 
 
     // Declaracion de iables
@@ -85,10 +93,10 @@ bool LeeMed(ifstream &fMed, Med medicos){
         contador_atributos = 0;
         contador_medicos++;
     }
-    archivo.close();
+    archivo.close();*/
 }
 
-bool LeeTur2(ifstream &fTur, Tur turnos){
+bool LeeSlc(ifstream &fTur, Tur turnos){
 
     //Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
     //Post condicion: El vector se llena con la informacion del archivo SolicitudTurnos.txt y la funcion no devuelve nada.
@@ -156,7 +164,7 @@ bool LeeTur2(ifstream &fTur, Tur turnos){
     }
     archivo.close();
 }
-*/
+
 
 void inicTur(tenTur &tTurnos, int nMaxEsp, int nMaxTur, int dias){
     for(int e = 0; e < nMaxEsp; e++){
@@ -210,7 +218,6 @@ void mostrarRegTur(regTur rTur){
     cout << rTur.turno.cred << " ";
     cout << endl;
 }
-
 short cnvHhMm(short hhmm){
 /**
  * dada la hora en formato hhmm, devuelve la posicion del tensor de los turnos
@@ -286,10 +293,27 @@ int busBin(Esp vEsp, str20 eClv, int ult){
     }
     return -1;
 }
+void procTurnos(ifstream &fTur, tenTur &tTur, regTur rTur, Esp vEsp, int carEsp, int *carTur){
+    *carTur = 0;
+    inicTur(tTur, nMaxEsp, nMaxTur, dias);
+    while( LeeTur(fTur, rTur)){
+        strcpy(tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].obra, rTur.turno.obra);
+        tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].cred = rTur.turno.cred;
+        (*carTur)++;
+    }
+}
+
+void procMedicos(ifstream &fMed, Med vMed, int *carMed){
+    *carMed = 0;
+    while(LeeMed(fMed, vMed[carMed])){
+        (*carMed)++;
+    }
+}
 
 main() {
 
 //Declarar las variables utilizadas en el bloque main().
+
     //Especialidades
     Esp vEsp;
     int *carEsp;
@@ -297,49 +321,41 @@ main() {
     //Turnos
     regTur rTur;
     tenTur tTur;
-    int carTur = 0;
+    int *carTur;
 
     //Medicos
-    const int cantidad_medicos = 36;
-    const int atributos_medico = 5;
-    static string medicos[cantidad_medicos][atributos_medico];
-
-//    const int cantidad_turnos = 18;
-//    const int atributos_turnos = 8;
-//    static string turnos[cantidad_turnos][atributos_turnos];
+    Med vMed;
+    int *carMed;
 
 //Abrir todos los archivos
     ifstream fEsp("Especialidades.Txt");
     ifstream fTur("TurnosDiaHora.Txt");
+    ifstream fMed("Medicos.Txt");
 
+    procMedicos(fMed, vMed, carMed);
     procEspecialidad(fEsp, vEsp, carEsp);
-    mostrarEsp(vEsp, *carEsp);
-
-    int posEsp;
-    int posHora;    int hhmm;
-
-    inicTur(tTur, nMaxEsp, nMaxTur, dias);
-    while( LeeTur(fTur, rTur)){
-        posEsp = busBin(vEsp, rTur.esp, *carEsp);
-        //hhmm = rTur.hora*100 + rTur.minu;
-        //posHora = cnvHhMm(hhmm);
-        cout << "[" << posEsp << "]";
-        cout << rTur.esp << endl;
-//          cout << "[" << posHora << "]";
-//        cout << "[" << rTur.dia-1 << "]" << endl;
-    //    strcpy(tTur[posEsp][posHora][rTur.dia-1].obra, rTur.turno.obra);
-    //    tTur[posEsp][posHora][rTur.dia-1].cred = rTur.turno.cred;
-        carTur++;
-    }
-    //mostrarTensor(tTur, nMaxEsp, nMaxTur, dias);
+    procTurnos(fTur, tTur, rTur, vEsp, *carEsp, carTur);
+    //lstTurnos();
+    //procTurnos();
+    //lstTurnos();
 
 //cerrar todos los archivos
     fEsp.close();
     fTur.close();
+    fMed.close();
 
-    //LeeTur(turnos); // ERROR retorno de programa distinto de cero
-    //cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
+//    Medicos
+//    const int cantidad_medicos = 36;
+//    const int atributos_medico = 5;
+//    static string medicos[cantidad_medicos][atributos_medico];
 
+//    Turnos
+//    const int cantidad_turnos = 18;
+//    const int atributos_turnos = 8;
+//    static string turnos[cantidad_turnos][atributos_turnos];
+
+//    LeeSlc(turnos); // ERROR retorno de programa distinto de cero
+//    cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
 //    LeeMed(medicos);
 //    cout << "Medicos: " << endl;
 //    for(int i = 0; i < 36; i++){
