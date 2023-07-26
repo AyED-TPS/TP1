@@ -94,10 +94,12 @@ bool LeeMed(ifstream &fMed, regMed rMed){
         contador_medicos++;
     }
     archivo.close();*/
+
+    return fMed.good();
 }
 
-bool LeeSlc(ifstream &fTur, Tur turnos){
-
+bool LeeSlc(ifstream &fSlc, Tur turnos){
+/*
     //Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
     //Post condicion: El vector se llena con la informacion del archivo SolicitudTurnos.txt y la funcion no devuelve nada.
 
@@ -163,6 +165,9 @@ bool LeeSlc(ifstream &fTur, Tur turnos){
         contador_turnos++;
     }
     archivo.close();
+*/
+
+    return fSlc.good();
 }
 
 
@@ -304,10 +309,10 @@ void procTurnos(ifstream &fTur, tenTur &tTur, regTur rTur, Esp vEsp, int carEsp,
 }
 
 void procMedicos(ifstream &fMed, Med vMed, int *carMed){
-    *carMed = 0;
-    while(LeeMed(fMed, vMed[carMed])){
-        (*carMed)++;
-    }
+//    *carMed = 0;
+//    while(LeeMed(fMed, vMed[*carMed])){
+//        (*carMed)++;
+//    }
 }
 
 main() {
