@@ -46,6 +46,10 @@ struct regMed{
 };
 typedef regMed Med[nMaxMed];
 
+//Hora
+const nChTur = 5;
+typedef char str5[nChTur+1];
+
 bool LeeMed(ifstream &fMed, regMed rMed){
 /*
     //Pre condicion: La funcion recibe un vector de dos dimensiones vacio. // un registro de medico
@@ -170,7 +174,6 @@ bool LeeSlc(ifstream &fSlc, Tur turnos){
     return fSlc.good();
 }
 
-
 void inicTur(tenTur &tTurnos, int nMaxEsp, int nMaxTur, int nMaxDias){
     for(int e = 0; e < nMaxEsp; e++){
         for(int t = 0; t < nMaxTur; t++){
@@ -200,7 +203,7 @@ bool LeeTur(ifstream &fTur, regTur &turno){
 
     return fTur.good();
 }
-void mostrarTensor(tenTur tensor, Esp vEsp){
+void tstMostrarTensor(tenTur tensor, Esp vEsp){
     for(int a = 0; a < nMaxEsp; a++){
         cout << "ESPECIALIDAD[" << a << "]: " << vEsp[a] << endl;
         cout << "  |Obra social    |Creden" << endl;
@@ -215,7 +218,7 @@ void mostrarTensor(tenTur tensor, Esp vEsp){
         } cout << endl << endl;
     }
 }
-void mostrarRegTur(regTur rTur){
+void tstMostrarRegTur(regTur rTur){
     cout << rTur.esp << " ";
     cout << rTur.dia << " ";
     cout << rTur.hora << " ";
@@ -225,9 +228,7 @@ void mostrarRegTur(regTur rTur){
     cout << endl;
 }
 short cnvHhMm(short hhmm){
-/**
- * dada la hora en formato hhmm, devuelve la posicion del tensor de los turnos
- */
+
     const short hIni = 800,
                 hFin = 1930;
     short pos = -1,
@@ -240,12 +241,6 @@ short cnvHhMm(short hhmm){
 }
 
 bool LeeEsp(ifstream &fEsp, str20 esp){
-/**
- * Lee una especialidad
- * @return
- * true: lectura exitosa
- * false: lectura no exitosa | fin de archivo
- */
     fEsp.get(esp, nChEsp+1);
     fEsp.ignore();
 
@@ -280,7 +275,7 @@ void procEspecialidad(ifstream &fEsp, Esp vEsp, int *carEsp){
         (*carEsp)++;
     OrdxBur(vEsp, *carEsp);
 }
-void mostrarEsp(Esp vEsp, int carEsp){
+void tstMostrarEsp(Esp vEsp, int carEsp){
     for(int i = 0; i < carEsp; i++){
         cout << "[" << i << "] " << vEsp[i]<< "|" << endl;
     }
@@ -317,87 +312,77 @@ void procMedicos(ifstream &fMed, Med vMed, int *carMed){
 //    }
 }
 
-// void OrdxBur(tid tbl, tid card), ordena tbl PerMed por NomEsp+Turno.
-
-const nChTur = 5;
-typedef char str5[nChTur+1];
-
 void impEsp(ofstream &arch, short num){
     if(num < 10) arch << " " << num;
     else arch << num;
 }
 
-void impCred(ofstream &arch, short cred){
-    div_t cred_d;
-    cred_d = div((float)cred, 100.0);
-
-    arch << cred_d.quot << "." << cred_d.rem;
-}
-
 void cnvPosHhMm(str5 &res, int n){
 
     switch(n){
-        case 0: strcpy(res, "08:00");
-        case 1: strcpy(res, "08:30");
-        case 2: strcpy(res, "09:00");
-        case 3: strcpy(res, "09:30");
-        case 4: strcpy(res, "10:00");
-        case 5: strcpy(res, "10:30");
-        case 6: strcpy(res, "11:00");
-        case 7: strcpy(res, "11:30");
-        case 8: strcpy(res, "12:00");
-        case 9: strcpy(res, "12:30");
-        case 10: strcpy(res,"13:00");
-        case 11: strcpy(res,"13:30");
-        case 12: strcpy(res,"14:00");
-        case 13: strcpy(res,"14:30");
-        case 14: strcpy(res,"15:00");
-        case 15: strcpy(res,"15:30");
-        case 16: strcpy(res,"16:00");
-        case 17: strcpy(res,"16:30");
-        case 18: strcpy(res,"17:00");
-        case 19: strcpy(res,"17:30");
-        case 20: strcpy(res,"18:00");
-        case 21: strcpy(res,"18:30");
-        case 22: strcpy(res,"19:00");
-        case 23: strcpy(res,"19:30");
+        case 0: strcpy(res, "08:00"); break;
+        case 1: strcpy(res, "08:30"); break;
+        case 2: strcpy(res, "09:00"); break;
+        case 3: strcpy(res, "09:30"); break;
+        case 4: strcpy(res, "10:00"); break;
+        case 5: strcpy(res, "10:30"); break;
+        case 6: strcpy(res, "11:00"); break;
+        case 7: strcpy(res, "11:30"); break;
+        case 8: strcpy(res, "12:00"); break;
+        case 9: strcpy(res, "12:30"); break;
+        case 10: strcpy(res,"13:00"); break;
+        case 11: strcpy(res,"13:30"); break;
+        case 12: strcpy(res,"14:00"); break;
+        case 13: strcpy(res,"14:30"); break;
+        case 14: strcpy(res,"15:00"); break;
+        case 15: strcpy(res,"15:30"); break;
+        case 16: strcpy(res,"16:00"); break;
+        case 17: strcpy(res,"16:30"); break;
+        case 18: strcpy(res,"17:00"); break;
+        case 19: strcpy(res,"17:30"); break;
+        case 20: strcpy(res,"18:00"); break;
+        case 21: strcpy(res,"18:30"); break;
+        case 22: strcpy(res,"19:00"); break;
+        case 23: strcpy(res,"19:30"); break;
     }
 }
 
 void lstTurnos(ofstream &fLst, tenTur tTur, int carTur, Esp vEsp){
 
-    // asignacion de turnos
-    // imprimirlo
-
     int posEsp,
         posTur,
         posDia;
-
     str5 cad;
+    str20 espAnt;
 
     fLst << "Listado de turnos INICIAL orden Espec.+Dia+Turno" << endl;
     fLst << "Especialidad        Dia Horario Obr. Soc.       Nro. Cred." << endl;
 
     posEsp = posTur = posDia = 0;
-    while(tTur[posEsp][posTur][posDia].cred == 0){
-        posTur++;
-        if(posTur >= 24){
-            posDia++;
-            posTur = 0;
+    strcpy(espAnt, vEsp[0]);
+    while(carTur--){
+        while(tTur[posEsp][posTur][posDia].cred == 0){
+            posTur++;
+            if(posTur >= 24){
+                posDia++;
+                posTur = 0;
+            }
+            if(posDia >= 30){
+                posDia = 0;
+                posEsp++;
+            }
         }
-    }
-    fLst << vEsp[posEsp] << " ";
-    impEsp(fLst, posDia+1);
-    fLst << "  ";
-    cnvPosHhMm(cad, posTur);
-    fLst << cad << "  ";
-//    fLst << posTur << "  ";
-    fLst << tTur[posEsp][posTur][posDia].obra << "  ";
-    fLst << tTur[posEsp][posTur][posDia].cred << endl;
-//    //fLst << posTur;
-//    posTur %= 24;
-//    cout << "posTur: " << posTur;
 
+        fLst << vEsp[posEsp] << " ";
+        impEsp(fLst, posDia+1);
+        cnvPosHhMm(cad, posTur);
+        fLst << "  " << cad << "  ";
+        fLst << tTur[posEsp][posTur][posDia].obra << "  ";
+        fLst << tTur[posEsp][posTur][posDia].cred/100 << "." << tTur[posEsp][posTur][posDia].cred % 100;
+        fLst << endl;
+
+        posTur++;
+    }
 }
 
 main() {
@@ -427,7 +412,7 @@ main() {
     procEspecialidad(fEsp, vEsp, carEsp);
     procTurnos(fTur, tTur, rTur, vEsp, *carEsp, carTur);
     lstTurnos(fLst, tTur, *carTur, vEsp);
-    //mostrarTensor(tTur, vEsp);
+    //tstMostrarTensor(tTur, vEsp);
     //procTurnos();
     //lstTurnos();
 

@@ -1,3 +1,128 @@
 Listado de turnos INICIAL orden Espec.+Dia+Turno
 Especialidad        Dia Horario Obr. Soc.       Nro. Cred.
-Analisis Clinico      5  19:30  Swiss Medical    173623
+Analisis Clinico      5  14:00  Swiss Medical    1736.23
+Analisis Clinico     12  19:30  Swiss Medical    8245.23
+Analisis Clinico     13  09:00  Galeno           1426.74
+Analisis Clinico     13  15:00  Accord Salud     1024.57
+Analisis Clinico     13  17:30  Medife           4127.90
+Analisis Clinico     16  17:30  Osde             5632.48
+Cardiologia           3  08:30  Galeno           2418.54
+Cardiologia           9  16:30  Accord Salud     6844.21
+Cardiologia          13  19:00  Swiss Medical    1028.42
+Cardiologia          14  16:30  AcaSalud         1867.37
+Cardiologia          15  11:30  Swiss Medical    1631.65
+Cardiologia          15  12:00  Federada Salud   2345.67
+Cardiologia          16  08:30  Medife           5421.80
+Cardiologia          16  12:30  COBERMET         9876.54
+Dermatologia          2  12:00  Swiss Medical    5724.83
+Dermatologia          3  17:30  Galeno           5740.88
+Dermatologia          5  12:00  Accord Salud     2448.72
+Dermatologia         11  13:00  Ioma             2412.89
+Dermatologia         11  14:30  Galeno           2484.43
+Dermatologia         12  10:30  Swiss Medical    1910.55
+Dermatologia         15  12:30  Federada Salud   3456.78
+Dermatologia         16  12:00  Ioma             4127.39
+Dermatologia         16  13:00  Federada Salud   2345.67
+Diabetologia         13  12:30  Hominis          9877.78
+Diabetologia         13  13:30  Hominis          6886.68
+Diabetologia         13  14:30  Hominis          122.44
+Endocrinologia       14  14:00  Apres Salud      1234.56
+Farmacologia          2  18:00  Ioma             3708.51
+Farmacologia          3  12:30  Medife           7134.95
+Farmacologia         14  19:00  Galeno           3754.71
+Gastroenterologia    15  08:30  Federada Salud   3456.78
+Gastroenterologia    15  09:00  Hominis          9876.54
+Gastroenterologia    15  09:30  ENSALUD          2345.67
+Gastroenterologia    16  08:00  Federada Salud   3456.78
+Gastroenterologia    16  15:30  Federada Salud   3456.78
+Ginecologia           4  18:30  Swiss Medical    1345.93
+Ginecologia          10  18:30  Osde             2663.76
+Ginecologia          11  11:30  Medife           1489.79
+Hematologia          13  12:00  ENSALUD          3214.56
+Hematologia          13  12:30  ENSALUD          5100.55
+Hematologia          13  13:00  ENSALUD          2584.31
+Hematologia          13  13:30  ENSALUD          1110.11
+Hematologia          13  14:00  ENSALUD          1325.64
+Neonatologia          4  13:30  Medife           1455.56
+Neonatologia          8  12:30  Medife           1357.88
+Neonatologia         13  12:00  Medife           1123.45
+Neurologia            3  09:30  Accord Salud     5417.89
+Neurologia            5  08:30  Galeno           5457.72
+Neurologia            7  12:00  Osde             5481.23
+Neurologia            7  17:30  Osplad           2457.88
+Neurologia            9  11:00  Swiss Medical    1762.80
+Neurologia           11  08:30  Galeno           8203.41
+Neurologia           11  12:00  Galeno           5743.17
+Neurologia           11  17:30  Accord Salud     2457.93
+Neurologia           11  19:30  Accord Salud     7144.93
+Neurologia           14  14:30  OMINT            7890.10
+Neurologia           14  15:00  Sancor Salud     4563.21
+Nutriologia           3  09:00  Osplad           1459.94
+Nutriologia           8  19:00  Medife           1453.21
+Nutriologia           9  12:30  Osplad           7128.39
+Nutriologia          11  15:30  Galeno           7806.97
+Nutriologia          12  14:30  Meicus           9455.7
+Nutriologia          13  18:00  Ioama            5322.94
+Nutriologia          16  14:00  AcaSalud         7812.52
+Obstetricia          15  10:30  CEMIC            7890.11
+Obstetricia          15  11:00  Cobermed         4567.89
+Obstetricia          16  10:30  CEMIC            7890.11
+Odontologia          12  08:00  CEMIC            123.45
+Odontologia          12  08:30  Cobermed         1123.45
+Odontologia          12  09:00  Galeno           2123.45
+Odontologia          12  09:30  Swiss Medical    3123.45
+Odontologia          12  10:00  Swiss Medical    4123.45
+Odontologia          12  10:30  Accord Salud     5123.45
+Odontologia          12  11:00  Ioma             6123.45
+Odontologia          12  11:30  Galeno           7123.45
+Odontologia          12  12:00  Ioma             8123.45
+Odontologia          12  12:30  Federada Salud   9123.45
+Odontologia          12  13:00  Federada Salud   223.45
+Odontologia          12  13:30  AcaSalud         1223.45
+Odontologia          12  14:00  Medife           2223.45
+Odontologia          12  14:30  Accord Salud     3223.45
+Odontologia          12  15:00  Swiss Medical    4223.45
+Odontologia          12  15:30  CEMIC            5223.45
+Odontologia          12  16:00  Cobermed         6223.45
+Odontologia          12  16:30  Galeno           7223.45
+Odontologia          12  17:00  Swiss Medical    8223.45
+Odontologia          12  17:30  Swiss Medical    9223.45
+Odontologia          12  18:00  Accord Salud     323.45
+Odontologia          12  18:30  Ioma             1323.45
+Odontologia          12  19:00  Galeno           2323.45
+Odontologia          12  19:30  Ioma             3323.45
+Oftalmologia         11  18:30  Osde             8754.51
+Oftalmologia         13  18:00  Osplad           7694.1
+Oftalmologia         15  13:00  Hominis          9876.54
+Oftalmologia         16  08:00  Osplad           6287.41
+Oftalmologia         16  10:30  Osde             6995.2
+Oftalmologia         16  17:30  ENSALUD          5678.90
+Pediatria             5  08:30  AcaSalud         2417.24
+Pediatria            11  16:00  Osplad           5175.31
+Pediatria            13  09:30  Union Personal   5376.72
+Pediatria            13  10:30  AcaSalud         2417.30
+Pediatria            14  14:00  AcaSalud         2416.5
+Pediatria            15  11:30  COBERMET         9876.54
+Pediatria            16  11:00  Cobermed         4567.89
+Psicologia           11  12:30  Osplad           1000.98
+Psicologia           14  12:30  Osplad           1021.1
+Psicologia           15  12:30  Osplad           1532.56
+Psicologia           16  12:30  Osplad           3216.88
+Psiquiatria           2  19:30  Swiss Medical    3169.34
+Psiquiatria           9  17:00  Osde             1055.90
+Psiquiatria          13  13:00  Swiss Medical    7688.76
+Psiquiatria          13  16:00  Osde             9932.45
+Psiquiatria          13  19:30  Medife           6031.69
+Psiquiatria          13  19:30  Osplad           5601.48
+Psiquiatria          16  15:00  Accord Salud     2449.19
+Psiquiatria          16  16:00  Medife           7454.99
+Radiologia            4  11:00  Osde             2142.91
+Radiologia           13  08:00  Osplad           5601.48
+Radiologia           13  12:00  Ioma             8290.3
+Radiologia           15  17:30  Medife           7141.32
+Traumatologia         1  10:30  Ioma             1401.78
+Traumatologia         1  15:00  Accord Salud     1147.30
+Traumatologia         3  10:30  Accord Salud     1044.30
+Traumatologia         9  10:00  Ioma             5260.19
+Traumatologia        15  10:00  Casa Salud       1234.56
+Traumatologia        16  09:00  Casa Salud       1234.56
