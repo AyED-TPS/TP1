@@ -1,0 +1,3 @@
+Listado de turnos INICIAL orden Espec.+Dia+Turno
+Especialidad        Dia Horario Obr. Soc.       Nro. Cred.
+Analisis Clinico      5  19:30  Swiss Medical    173623
