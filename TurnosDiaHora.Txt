@@ -1,29 +1,28 @@
-Psiquiatria           2 19 30 Swiss Medical   316934
-Psiquiatria          16 16 00 Medife          745499
+Analisis Clinico     13 15 00 Accord Salud    102457
 Psiquiatria          16 15 00 Accord Salud    244919
 Psiquiatria           9 17 00 Osde            105590
+Analisis Clinico     16 17 30 Osde            563248
+Psiquiatria           2 19 30 Swiss Medical   316934
 Psiquiatria          13 19 30 Medife          603169
+Analisis Clinico      5 14 00 Swiss Medical   173623
 Psiquiatria          13 13 00 Swiss Medical   768876
 Psiquiatria          13 16 00 Osde            993245
 Analisis Clinico     12 19 30 Swiss Medical   824523
-Analisis Clinico     13 15 00 Accord Salud    102457
+Nutriologia          11 15 30 Galeno          780697
 Analisis Clinico     13 17 30 Medife          412790
-Analisis Clinico     16 17 30 Osde            563248
-Analisis Clinico      5 14 00 Swiss Medical   173623
 Analisis Clinico     13  9 00 Galeno          142674
 Ginecologia           4 18 30 Swiss Medical   134593
 Ginecologia          10 18 30 Osde            266376
 Ginecologia          11 11 30 Medife          148979
 Nutriologia           3  9 00 Osplad          145994
 Nutriologia           8 19 00 Medife          145321
-Nutriologia          11 15 30 Galeno          780697
 Nutriologia          12 14 30 Meicus          945507
-Nutriologia          16 14 00 AcaSalud        781252
 Nutriologia           9 12 30 Osplad          712839
 Nutriologia          13 18 00 Ioama           532294
 Neurologia            3  9 30 Accord Salud    541789
 Neurologia            5  8 30 Galeno          545772
 Neurologia            7 12 00 Osde            548123
+Psiquiatria          16 16 00 Medife          745499
 Neurologia            9 11 00 Swiss Medical   176280
 Neurologia           11 12 00 Galeno          574317
 Neurologia           14 14 30 OMINT           789010
@@ -39,6 +38,7 @@ Traumatologia         3 10 30 Accord Salud    104430
 Traumatologia        16 09 00 Casa Salud      123456
 Traumatologia        15 10 00 Casa Salud      123456
 Traumatologia         9 10 00 Ioma            526019
+Nutriologia          16 14 00 AcaSalud        781252
 Obstetricia          16 10 30 CEMIC           789011
 Obstetricia          15 10 30 CEMIC           789011
 Obstetricia          15 11 00 Cobermed        456789
