@@ -24,13 +24,13 @@ typedef char str20[nChEsp+1];
 typedef str20 vecEsp[nMaxEsp];
 
 //Medicos
-const nMaxTur = 3;
+const nMaxMed = 60;
 struct regMed{
     str20 apeNom,
           esp;
     char turno;
 };
-typedef str20 matMed[nMaxTur][nMaxEsp];
+typedef regMed vecMed[nMaxMed];
 
 //Turnos
 const nMaxSes = 24,
@@ -88,15 +88,59 @@ bool LeeMed(ifstream &fMed, regMed &rMed){
 
     return fMed.good();
 }
-void procMedicos(ifstream &fMed, matMed mMed, int *carMed){
+void procMedicos(ifstream &fMed, vecMed vMed, int *carMed){
     regMed rMed;
 
     *carMed = 0;
     while(LeeMed(fMed, rMed)){
-        strcpy(mMed[(*carMed) % 3][(*carMed) / 3], rMed.apeNom);
+        strcpy(vMed[(*carMed)].apeNom, rMed.apeNom);
+        strcpy(vMed[(*carMed)].esp, rMed.esp);
+        vMed[(*carMed)].turno = rMed.turno;
         (*carMed)++;
     }
 }
+
+void IntCmb(str20 esp1, str20 esp2){
+    str20 aux;
+    strcpy(aux, esp1);
+    strcpy(esp1, esp2);
+    strcpy(esp2, aux);
+}
+void OrdxBur(vecEsp vEsp, int carEsp){
+    int k = 0;
+    bool ordenado;
+
+    do{
+        k++;
+        ordenado = true;
+
+        for(int i = 0; i <= carEsp-k-1; i++){
+            if(strcmp(vEsp[i], vEsp[i+1]) > 0){
+                ordenado = false;
+                IntCmb(vEsp[i], vEsp[i+1]);
+            }
+        }
+    } while(!ordenado);
+}
+bool LeeEsp(ifstream &fEsp, str20 esp){
+/**
+ * Descarga un registro de Especialidades en esp
+ * @return
+ * true = {lectura exitosa}
+ * false = {lectura no exitosa | fin de archivo}
+ */
+    fEsp.get(esp, nChEsp+1);
+    fEsp.ignore();
+
+    return fEsp.good();
+}
+void procEspecialidad(ifstream &fEsp, vecEsp vEsp, int *carEsp){
+    *carEsp = 0;
+    while( LeeEsp(fEsp, vEsp[*carEsp]) )
+        (*carEsp)++;
+    OrdxBur(vEsp, *carEsp);
+}
+
 bool LeeSlc(ifstream &fSlc, regSlc rSlc){
 /**
  * Descarga un registro de TurnosActuales en rSlc
@@ -134,6 +178,45 @@ bool LeeTur(ifstream &fTur, regTur &turno){
 
     return fTur.good();
 }
+busBin(vecEsp vEsp, str20 eClv, int ult){
+    int pri = 0,
+        med;
+
+    while(pri <= ult){
+        med = (pri + ult) / 2;
+        if(strcmp(eClv, vEsp[med]) == 0)
+            return med;
+        else if(strcmp(eClv, vEsp[med]) > 0)
+            pri = med + 1;
+        else ult = med - 1;
+    }
+    return -1;
+}
+short cnvHhMm(short hhmm){
+/**
+ * @return posicion de hora sesion en funcion de hora en formato hhmm
+ */
+    const short hIni = 800;
+    short pos = -1,
+          i = hIni;
+
+    while(hhmm != i)
+        i = ++pos % 2 ? i + 70 : i + 30;
+
+    return ++pos;
+}
+void procTurnos(ifstream &fTur, tenTur &tTur, int *carTur, vecEsp vEsp, int carEsp){
+    *carTur = 0;
+    regTur rTur;
+
+    inicTur(tTur, nMaxEsp, nMaxSes, nMaxDias);
+    while(LeeTur(fTur, rTur)){
+        strcpy(tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].obra, rTur.turno.obra);
+        tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].cred = rTur.turno.cred;
+        (*carTur)++;
+    }
+}
+
 void tstMostrarTensor(tenTur tensor, vecEsp vEsp){
     for(int a = 0; a < nMaxEsp; a++){
         cout << "ESPECIALIDAD[" << a << "]: " << vEsp[a] << endl;
@@ -158,60 +241,6 @@ void tstMostrarRegTur(regTur rTur){
     cout << rTur.turno.cred << " ";
     cout << endl;
 }
-short cnvHhMm(short hhmm){
-/**
- * @return posicion de hora sesion en funcion de hora en formato hhmm
- */
-    const short hIni = 800;
-    short pos = -1,
-          i = hIni;
-
-    while(hhmm != i)
-        i = ++pos % 2 ? i + 70 : i + 30;
-
-    return ++pos;
-}
-
-bool LeeEsp(ifstream &fEsp, str20 esp){
-/**
- * Descarga un registro de Especialidades en esp
- * @return
- * true = {lectura exitosa}
- * false = {lectura no exitosa | fin de archivo}
- */
-    fEsp.get(esp, nChEsp+1);
-    fEsp.ignore();
-
-    return fEsp.good();
-}
-void IntCmb(str20 esp1, str20 esp2){
-    str20 aux;
-    strcpy(aux, esp1);
-    strcpy(esp1, esp2);
-    strcpy(esp2, aux);
-}
-void OrdxBur(vecEsp vEsp, int carEsp){
-    int k = 0;
-    bool ordenado;
-
-    do{
-        k++;
-        ordenado = true;
-
-        for(int i = 0; i <= carEsp-k-1; i++){
-            if(strcmp(vEsp[i], vEsp[i+1]) > 0){
-                ordenado = false;
-                IntCmb(vEsp[i], vEsp[i+1]);
-            }
-        }
-    } while(!ordenado);
-}
-void procEspecialidad(ifstream &fEsp, vecEsp vEsp, int *carEsp){
-    *carEsp = 0;
-    while( LeeEsp(fEsp, vEsp[*carEsp]) )
-        (*carEsp)++;
-    OrdxBur(vEsp, *carEsp);
-}
 void tstMostrarEsp(vecEsp vEsp, int carEsp){
     for(int i = 0; i < carEsp; i++){
         cout << "[" << i << "] " << vEsp[i]<< "|" << endl;
@@ -219,34 +248,7 @@ void tstMostrarEsp(vecEsp vEsp, int carEsp){
     cout << "carEsp = " << carEsp << endl;
 }
 
-busBin(vecEsp vEsp, str20 eClv, int ult){
-    int pri = 0,
-        med;
-
-    while(pri <= ult){
-        med = (pri + ult) / 2;
-        if(strcmp(eClv, vEsp[med]) == 0)
-            return med;
-        else if(strcmp(eClv, vEsp[med]) > 0)
-            pri = med + 1;
-        else ult = med - 1;
-    }
-    return -1;
-}
-void procTurnos(ifstream &fTur, tenTur &tTur, int *carTur, vecEsp vEsp, int carEsp){
-    *carTur = 0;
-    regTur rTur;
-
-    inicTur(tTur, nMaxEsp, nMaxSes, nMaxDias);
-    while(LeeTur(fTur, rTur)){
-        strcpy(tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].obra, rTur.turno.obra);
-        tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].cred = rTur.turno.cred;
-        (*carTur)++;
-    }
-}
-
 void cnvPosHhMm(str5 &res, int n){
-
     switch(n){
         case 0: strcpy(res, " 8:00"); break;
         case 1: strcpy(res, " 8:30"); break;
@@ -274,7 +276,6 @@ void cnvPosHhMm(str5 &res, int n){
         case 23: strcpy(res,"19:30"); break;
     }
 }
-
 void impTurno(ofstream &fLst, str20 esp, int dia, int posHor, str15 obra, int cred){
     str5 hora;
     cnvPosHhMm(hora, posHor);
@@ -310,19 +311,13 @@ void lstTurnos(ofstream &fLst, tenTur tTur, int carTur, vecEsp vEsp, str11 titul
 main() {
 
 //Declarar las variables utilizadas en el bloque main().
-
-    //Especialidades
     vecEsp vEsp;
-    int *carEsp;
-
-    //Turnos
     regTur rTur;
     tenTur tTur;
-    int *carTur;
-
-    //Medicos
-    matMed mMed;
-    int *carMed;
+    vecMed vMed;
+    int *carEsp,
+        *carTur,
+        *carMed;
 
 //Abrir todos los archivos
     ifstream fEsp("Especialidades.Txt");
@@ -330,7 +325,7 @@ main() {
     ifstream fMed("Medicos.Txt");
     ofstream fLst("Listadox3.Txt");
 
-    procMedicos(fMed, mMed, carMed);
+    procMedicos(fMed, vMed, carMed);
     procEspecialidad(fEsp, vEsp, carEsp);
     procTurnos(fTur, tTur, carTur, vEsp, *carEsp);
     lstTurnos(fLst, tTur, *carTur, vEsp, "INICIAL");
@@ -341,26 +336,7 @@ main() {
     fEsp.close();
     fTur.close();
     fMed.close();
+    fLst.close();
 
-//    Medicos
-//    const int cantidad_medicos = 36;
-//    const int atributos_medico = 5;
-//    static string medicos[cantidad_medicos][atributos_medico];
-
-//    Turnos
-//    const int cantidad_turnos = 18;
-//    const int atributos_turnos = 8;
-//    static string turnos[cantidad_turnos][atributos_turnos];
-
-//    LeeSlc(turnos); // ERROR retorno de programa distinto de cero
-//    cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
-//    LeeMed(medicos);
-//    cout << "Medicos: " << endl;
-//    for(int i = 0; i < 36; i++){
-//        for(int j = 0; j < 5; j++){
-//            cout << medicos[i][j];
-//        }
-//        cout << endl;
-//    }
     return 0;
 }
