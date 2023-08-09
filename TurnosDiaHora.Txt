@@ -74,7 +74,7 @@ Pediatria            14 14 00 AcaSalud        241605
 Pediatria             5  8 30 AcaSalud        241724
 Pediatria            11 16 00 Osplad          517531
 Pediatria            16 11 00 Cobermed        456789
-Pediatria            15 11 30 Osde            137529
+Pediatria            15 11 00 Osde            137529
 Pediatria            15 11 30 COBERMET        987654
 Pediatria            13  9 30 Union Personal  537672
 Gastroenterologia    16 15 30 Federada Salud  345678
@@ -88,7 +88,6 @@ Farmacologia         14 19 00 Galeno          375471
 Odontologia          12  8 00 CEMIC           012345
 Odontologia          12  8 30 Cobermed        112345
 Odontologia          12  9 00 Galeno          212345
-Odontologia          12  9 30 Swiss Medical   312345
 Odontologia          12 10 00 Swiss Medical   412345
 Odontologia          12 10 30 Accord Salud    512345
 Odontologia          12 11 00 Ioma            612345
@@ -99,28 +98,30 @@ Odontologia          12 13 00 Federada Salud  022345
 Odontologia          12 13 30 AcaSalud        122345
 Odontologia          12 14 00 Medife          222345
 Odontologia          12 14 30 Accord Salud    322345
-Odontologia          12 15 00 Swiss Medical   422345
 Odontologia          12 15 30 CEMIC           522345
 Odontologia          12 16 00 Cobermed        622345
+Neonatologia          4 13 30 Medife          145556
 Odontologia          12 16 30 Galeno          722345
 Odontologia          12 17 00 Swiss Medical   822345
+Hematologia          13 13 00 ENSALUD         258431
 Odontologia          12 17 30 Swiss Medical   922345
 Odontologia          12 18 00 Accord Salud    032345
 Odontologia          12 18 30 Ioma            132345
 Odontologia          12 19 00 Galeno          232345
 Odontologia          12 19 30 Ioma            332345
 Neonatologia         13 12 00 Medife          112345
+Odontologia          12  9 30 Swiss Medical   312345
 Neonatologia          8 12 30 Medife          135788
-Neonatologia          4 13 30 Medife          145556
 Psicologia           16 12 30 Osplad          321688
+Odontologia          12 15 00 Swiss Medical   422345
 Psicologia           15 12 30 Osplad          153256
 Psicologia           14 12 30 Osplad          102101
 Psicologia           11 12 30 Osplad          100098
 Hematologia          13 12 30 ENSALUD         510055
 Hematologia          13 12 00 ENSALUD         321456
-Hematologia          13 13 00 ENSALUD         258431
 Hematologia          13 13 30 ENSALUD         111011
 Hematologia          13 14 00 ENSALUD         132564
 Diabetologia         13 12 30 Hominis         987778
 Diabetologia         13 13 30 Hominis         688668
 Diabetologia         13 14 30 Hominis         012244
+Hematologia          16 19 30 OSECAC          000000
