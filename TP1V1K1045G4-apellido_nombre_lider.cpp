@@ -3,7 +3,7 @@
     Programa Fuente: TP1V1K1045G4-apellido_nombre.cpp
     Fecha Entrega: 14/8/2023
     Nro. version: V1
-    Objetivo: Asignacion de turnos por servicios medicos seg�n especialidad, dia y turno (mangana, tarde, noche),
+    Objetivo: Asignacion de turnos por servicios medicos segun especialidad, dia y turno (mangana, tarde, noche),
       de acuerdo a la solicitud de quien requiere el servicio.
     Curso: K1045
         Dias: Lunes, turno tarde.
@@ -141,16 +141,6 @@ void procEspecialidad(ifstream &fEsp, vecEsp vEsp, int *carEsp){
     OrdxBur(vEsp, *carEsp);
 }
 
-bool LeeSlc(ifstream &fSlc, regSlc rSlc){
-/**
- * Descarga un registro de TurnosActuales en rSlc
- * @return
- * true = {lectura exitosa}
- * false = {lectura no exitosa | fin de archivo}
- */
-
-    return fSlc.good();
-}
 void inicTur(tenTur &tTurnos, int nMaxEsp, int nMaxSes, int nMaxDias){
     for(int e = 0; e < nMaxEsp; e++)
         for(int t = 0; t < nMaxSes; t++)
@@ -232,15 +222,6 @@ void tstMostrarTensor(tenTur tensor, vecEsp vEsp){
         } cout << endl << endl;
     }
 }
-void tstMostrarRegTur(regTur rTur){
-    cout << rTur.esp << " ";
-    cout << rTur.dia << " ";
-    cout << rTur.hora << " ";
-    cout << rTur.minu << " ";
-    cout << rTur.turno.obra << " ";
-    cout << rTur.turno.cred << " ";
-    cout << endl;
-}
 void tstMostrarEsp(vecEsp vEsp, int carEsp){
     for(int i = 0; i < carEsp; i++){
         cout << "[" << i << "] " << vEsp[i]<< "|" << endl;
@@ -308,6 +289,66 @@ void lstTurnos(ofstream &fLst, tenTur tTur, int carTur, vecEsp vEsp, str11 titul
     fLst << endl;
 }
 
+bool LeeSlc(ifstream &fSlc, regSlc &rSlc){
+/**
+ * Descarga un registro de TurnosActuales en rSlc
+ * @return
+ * true = {lectura exitosa}
+ * false = {lectura no exitosa | fin de archivo}
+ */
+
+    fSlc.get(rSlc.apeNom, nChEsp+1);
+    fSlc.ignore();
+    fSlc.get(rSlc.turno.obra, 2+1); // ignorando la edad
+    fSlc.ignore();
+    fSlc.get(rSlc.turno.obra, nChObS+1);
+    fSlc.ignore();
+    fSlc >> rSlc.turno.cred;
+    fSlc.ignore();
+    fSlc.get(rSlc.esp, nChEsp+1);
+    fSlc.ignore();
+    fSlc >> rSlc.dia;
+    fSlc.ignore();
+    fSlc.get(rSlc.chTur);
+    fSlc.ignore();
+
+    return fSlc.good();
+}
+
+void procSolicitud(ifstream &fSlc, tenTur &tTur, int *carTur, vecEsp vEsp, int carEsp, ofstream &fLst){
+    regSlc rSlc;
+    short posHor;
+    str5 hora;
+
+    fLst << "Listado de Solicitudes Actuales orden Cronologico" << endl;
+    fLst << "Apellido Nombre      Nom.Obr. Soc.   Nro.Cred. Especialidad        Dia Turno Medico/a" << endl;
+
+    while(LeeSlc(fSlc, rSlc)){
+        switch(rSlc.chTur){
+            case 'M': posHor = 0; break;
+            case 'T': posHor = 8; break;
+            case 'N': posHor = 16; break;
+        }
+
+        while(strcmp(tTur[busBin(vEsp, rSlc.esp, carEsp)][posHor][rSlc.dia-1].obra, "*"))
+            posHor++;
+        strcpy(tTur[busBin(vEsp, rSlc.esp, carEsp)][posHor][rSlc.dia-1].obra, rSlc.turno.obra);
+        tTur[busBin(vEsp, rSlc.esp, carEsp)][posHor][rSlc.dia-1].cred = rSlc.turno.cred;
+        (*carTur)++;
+
+        cnvPosHhMm(hora, posHor);
+        fLst << rSlc.apeNom << " ";
+        fLst << rSlc.turno.obra << "  ";
+        fLst << rSlc.turno.cred << "   ";
+        fLst << rSlc.esp << " ";
+        fLst << setw(2) << rSlc.dia << " ";
+        fLst << hora << " ";
+        fLst << "Med(esp, turno)" << endl; // falta la funcion que devuelve el nombre del medico en funcion de la especialidad y el turno
+    }
+
+    fLst << endl;
+}
+
 main() {
 
 //Declarar las variables utilizadas en el bloque main().
@@ -320,22 +361,24 @@ main() {
         *carMed;
 
 //Abrir todos los archivos
-    ifstream fEsp("Especialidades.Txt");
-    ifstream fTur("TurnosDiaHora.Txt");
-    ifstream fMed("Medicos.Txt");
+    ifstream fMed("Medicos.Txt"),
+             fEsp("Especialidades.Txt"),
+             fTur("TurnosDiaHora.Txt"),
+             fSlc("SolicitudTurnos.Txt");
     ofstream fLst("Listadox3.Txt");
 
-    procMedicos(fMed, vMed, carMed);
+    //procMedicos(fMed, vMed, carMed);
     procEspecialidad(fEsp, vEsp, carEsp);
     procTurnos(fTur, tTur, carTur, vEsp, *carEsp);
     lstTurnos(fLst, tTur, *carTur, vEsp, "INICIAL");
-    //procTurnos();
+    procSolicitud(fSlc, tTur, carTur, vEsp, *carEsp, fLst);
     lstTurnos(fLst, tTur, *carTur, vEsp, "ACTUALIZADO");
 
 //cerrar todos los archivos
+    fMed.close();
     fEsp.close();
     fTur.close();
-    fMed.close();
+    fSlc.close();
     fLst.close();
 
     return 0;

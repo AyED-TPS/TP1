@@ -128,6 +128,39 @@ Traumatologia         9  10:00  Ioma             526019
 Traumatologia        15  10:00  Casa Salud       123456
 Traumatologia        16   9:00  Casa Salud       123456
 
+Listado de Solicitudes Actuales orden Cronologico
+Apellido Nombre      Nom.Obr. Soc.   Nro.Cred. Especialidad        Dia Turno Medico/a
+Zuckerberg Mark      Galeno           247891   Nutriologia          17 12:00 Med(esp, turno)
+Garfield Andrew      Galeno           215431   Nutriologia          17 16:00 Med(esp, turno)
+Stoessel Tini        Accord Salud     778012   Nutriologia          17 12:30 Med(esp, turno)
+Weasley Ron          Ioma             431780   Ginecologia          17  8:00 Med(esp, turno)
+Quito Esteban        Osde             321567   Ginecologia          17 16:00 Med(esp, turno)
+Musk Elon            Accord Salud     243879   Analisis Clinico     17  8:00 Med(esp, turno)
+Curie Marie          Medife           246312   Analisis Clinico     17  8:30 Med(esp, turno)
+Mbappe Kylian        Swiss Medical    243124   Analisis Clinico     17  9:00 Med(esp, turno)
+Parker Peter         Medife           123456   Analisis Clinico     17 16:00 Med(esp, turno)
+Rodriguez Javier     Swiss Medical    789012   Obstetricia          17 12:00 Med(esp, turno)
+Martinez Sofia       Galeno           456789   Pediatria            17 16:00 Med(esp, turno)
+Maguire Tobey        Accord Salud     767123   Dermatologia         17 12:00 Med(esp, turno)
+Perez Laura          Osplad           234567   Dermatologia         17 12:30 Med(esp, turno)
+Messi Lionel         Swiss Medical    321560   Cardiologia          17  8:00 Med(esp, turno)
+Lopez Ana            Accord Salud     987654   Cardiologia          17  8:30 Med(esp, turno)
+Gonzalez Maria       Medife           123456   Traumatologia        17  8:00 Med(esp, turno)
+Alver Julian         Medife           251849   Traumatologia        17  8:30 Med(esp, turno)
+Leonel Messi         Medife           135742   Traumatologia        17  9:00 Med(esp, turno)
+Ronaldo Cristiano    Medife           316847   Traumatologia        17  9:30 Med(esp, turno)
+Clemente Rodriguez   Medife           741963   Traumatologia        17 10:00 Med(esp, turno)
+Nahia Agullo         Medife           234876   Traumatologia        17 10:30 Med(esp, turno)
+Francisca Berrocal   Medife           951645   Traumatologia        17 11:00 Med(esp, turno)
+Denis Santiago       Medife           122548   Traumatologia        17 11:30 Med(esp, turno)
+Ronaldo Cristiano    Ioma             321567   Traumatologia        17 12:00 Med(esp, turno)
+Morales Miles        Osplad           321563   Radiologia           17  8:00 Med(esp, turno)
+Watson Emma          Medife           215874   Neurologia           17 16:00 Med(esp, turno)
+Esposito Lali        Medife           245124   Farmacologia         17 16:00 Med(esp, turno)
+Holland Tom          Swiss Medical    775392   Farmacologia         17  8:00 Med(esp, turno)
+Potter Harry         Galeno           752317   Psiquiatria          17 12:00 Med(esp, turno)
+Granger Hermione     Osplad           731890   Psiquiatria          17 12:30 Med(esp, turno)
+
 Listado de turnos ACTUALIZADO orden Espec.+Dia+Turno
 Especialidad        Dia Horario Obr. Soc.       Nro.Cred.
 Analisis Clinico      5  14:00  Swiss Medical    173623
@@ -136,6 +169,10 @@ Analisis Clinico     13   9:00  Galeno           142674
 Analisis Clinico     13  15:00  Accord Salud     102457
 Analisis Clinico     13  17:30  Medife           412790
 Analisis Clinico     16  17:30  Osde             563248
+Analisis Clinico     17   8:00  Accord Salud     243879
+Analisis Clinico     17   8:30  Medife           246312
+Analisis Clinico     17   9:00  Swiss Medical    243124
+Analisis Clinico     17  16:00  Medife           123456
 Cardiologia           3   8:30  Galeno           241854
 Cardiologia           9  16:30  Accord Salud     684421
 Cardiologia          13  19:00  Swiss Medical    102842
@@ -144,6 +181,8 @@ Cardiologia          15  11:30  Swiss Medical    163165
 Cardiologia          15  12:00  Federada Salud   234567
 Cardiologia          16   8:30  Medife           542180
 Cardiologia          16  12:30  COBERMET         987654
+Cardiologia          17   8:00  Swiss Medical    321560
+Cardiologia          17   8:30  Accord Salud     987654
 Dermatologia          2  12:00  Swiss Medical    572483
 Dermatologia          3  17:30  Galeno           574088
 Dermatologia          5  12:00  Accord Salud     244872
@@ -153,6 +192,8 @@ Dermatologia         12  10:30  Swiss Medical    191055
 Dermatologia         15  12:30  Federada Salud   345678
 Dermatologia         16  12:00  Ioma             412739
 Dermatologia         16  13:00  Federada Salud   234567
+Dermatologia         17  12:00  Accord Salud     767123
+Dermatologia         17  12:30  Osplad           234567
 Diabetologia         13  12:30  Hominis          987778
 Diabetologia         13  13:30  Hominis          688668
 Diabetologia         13  14:30  Hominis           12244
@@ -160,6 +201,8 @@ Endocrinologia       14  14:00  Apres Salud      123456
 Farmacologia          2  18:00  Ioma             370851
 Farmacologia          3  12:30  Medife           713495
 Farmacologia         14  19:00  Galeno           375471
+Farmacologia         17   8:00  Swiss Medical    775392
+Farmacologia         17  16:00  Medife           245124
 Gastroenterologia    15   8:30  Federada Salud   345678
 Gastroenterologia    15   9:00  Hominis          987654
 Gastroenterologia    15   9:30  ENSALUD          234567
@@ -168,6 +211,8 @@ Gastroenterologia    16  15:30  Federada Salud   345678
 Ginecologia           4  18:30  Swiss Medical    134593
 Ginecologia          10  18:30  Osde             266376
 Ginecologia          11  11:30  Medife           148979
+Ginecologia          17   8:00  Ioma             431780
+Ginecologia          17  16:00  Osde             321567
 Hematologia          13  12:00  ENSALUD          321456
 Hematologia          13  12:30  ENSALUD          510055
 Hematologia          13  13:00  ENSALUD          258431
@@ -188,6 +233,7 @@ Neurologia           11  17:30  Accord Salud     245793
 Neurologia           11  19:30  Accord Salud     714493
 Neurologia           14  14:30  OMINT            789010
 Neurologia           14  15:00  Sancor Salud     456321
+Neurologia           17  16:00  Medife           215874
 Nutriologia           3   9:00  Osplad           145994
 Nutriologia           8  19:00  Medife           145321
 Nutriologia           9  12:30  Osplad           712839
@@ -195,9 +241,13 @@ Nutriologia          11  15:30  Galeno           780697
 Nutriologia          12  14:30  Meicus           945507
 Nutriologia          13  18:00  Ioama            532294
 Nutriologia          16  14:00  AcaSalud         781252
+Nutriologia          17  12:00  Galeno           247891
+Nutriologia          17  12:30  Accord Salud     778012
+Nutriologia          17  16:00  Galeno           215431
 Obstetricia          15  10:30  CEMIC            789011
 Obstetricia          15  11:00  Cobermed         456789
 Obstetricia          16  10:30  CEMIC            789011
+Obstetricia          17  12:00  Swiss Medical    789012
 Odontologia          12   8:00  CEMIC             12345
 Odontologia          12   8:30  Cobermed         112345
 Odontologia          12   9:00  Galeno           212345
@@ -236,6 +286,7 @@ Pediatria            14  14:00  AcaSalud         241605
 Pediatria            15  11:00  Osde             137529
 Pediatria            15  11:30  COBERMET         987654
 Pediatria            16  11:00  Cobermed         456789
+Pediatria            17  16:00  Galeno           456789
 Psicologia           11  12:30  Osplad           100098
 Psicologia           14  12:30  Osplad           102101
 Psicologia           15  12:30  Osplad           153256
@@ -247,14 +298,26 @@ Psiquiatria          13  16:00  Osde             993245
 Psiquiatria          13  19:30  Medife           603169
 Psiquiatria          16  15:00  Accord Salud     244919
 Psiquiatria          16  16:00  Medife           745499
+Psiquiatria          17  12:00  Galeno           752317
+Psiquiatria          17  12:30  Osplad           731890
 Radiologia            4  11:00  Osde             214291
 Radiologia           13   8:00  Osplad           560148
 Radiologia           13  12:00  Ioma             829003
 Radiologia           15  17:30  Medife           714132
+Radiologia           17   8:00  Osplad           321563
 Traumatologia         1  10:30  Ioma             140178
 Traumatologia         1  15:00  Accord Salud     114730
 Traumatologia         3  10:30  Accord Salud     104430
 Traumatologia         9  10:00  Ioma             526019
 Traumatologia        15  10:00  Casa Salud       123456
 Traumatologia        16   9:00  Casa Salud       123456
+Traumatologia        17   8:00  Medife           123456
+Traumatologia        17   8:30  Medife           251849
+Traumatologia        17   9:00  Medife           135742
+Traumatologia        17   9:30  Medife           316847
+Traumatologia        17  10:00  Medife           741963
+Traumatologia        17  10:30  Medife           234876
+Traumatologia        17  11:00  Medife           951645
+Traumatologia        17  11:30  Medife           122548
+Traumatologia        17  12:00  Ioma             321567
 
