@@ -1,188 +1,153 @@
+
+/*
+    Programa Fuente: TP1V1K1045G4-apellido_nombre.cpp
+    Fecha Entrega: 14/8/2023
+    Nro. version: V1
+    Objetivo: Asignacion de turnos por servicios medicos segun especialidad, dia y turno (mangana, tarde, noche),
+      de acuerdo a la solicitud de quien requiere el servicio.
+    Curso: K1045
+        Dias: Lunes, turno tarde.
+    Grupo Nro.: 4
+    Integrantes: (Apellido, Nombre).
+*/
+
 #include <fstream.h>
 #include <string.h>
+#include <iomanip.h>
 
 using namespace std;
 
 // Especialidades
-const int nMaxEsp = 20;
-const int nChEsp = 20;
+const nMaxEsp = 20,
+      nChEsp = 20;
 typedef char str20[nChEsp+1];
-typedef str20 Esp[nMaxEsp];
+typedef str20 vecEsp[nMaxEsp];
+
+//Medicos
+const nMaxMed = 60;
+struct regMed{
+    str20 apeNom,
+          esp;
+    char turno;
+};
+typedef regMed vecMed[nMaxMed];
 
 //Turnos
-const int nMaxTur = 24; // 24 turnos por dia cada especialidad
-const int nMaxDias = 31;
-const nChObS = 15;
+const nMaxSes = 24,
+      nMaxDias = 31,
+      nChObS = 15;
 typedef char str15[nChObS+1];
 struct Tur{
     str15 obra;
     int cred;
 };
+typedef Tur tenTur[nMaxEsp][nMaxSes][nMaxDias];
+
+//Turnos Previos
 struct regTur{
     str20 esp;
-    int dia;
-    int hora;
-    int minu;
+    int dia,
+        hora,
+        minu;
     Tur turno;
 };
-typedef Tur tenTur[nMaxEsp][nMaxTur][nMaxDias];
 
-//Turnos Slc
+//Turnos Actuales
 struct regSlc{
-    str20 apeNom;
-    str20 esp;
+    str20 apeNom,
+          esp;
     int dia;
     char chTur;
     Tur turno;
 };
 
-//Medicos
-const int nMaxMed = 60;
-struct regMed{
-    str20 apeNom;
-    short matri;
-    str20 esp;
-    char turno;
-};
-typedef regMed Med[nMaxMed];
-
 //Hora
 const nChTur = 5;
 typedef char str5[nChTur+1];
 
-bool LeeMed(ifstream &fMed, regMed rMed){
-/*
-    //Pre condicion: La funcion recibe un vector de dos dimensiones vacio. // un registro de medico
-    //Post condicion: El vector se llena con la informacion del archivo Medicos.txt y la funcion no devuelve nada.// vuelva un registro del archivo al registro de Medico y devuelve true si la lectura fue exitosa
+//Titulo
+const nChTit = 11;
+typedef char str11[nChTit+1];
 
+bool LeeMed(ifstream &fMed, regMed &rMed){
+/**
+ * Descarga un registro de Medicos en rMed
+ * @return
+ * true = {lectura exitosa}
+ * false = {lectura no exitosa | fin de archivo}
+ */
 
-    // Declaracion de iables
-    ifstream archivo;
-    string linea_archivo;
-    int contador_medicos = 0;
-    int contador_atributos = 0;
-
-    // Manipulacion del archivo Medicos.txt
-    archivo.open("Medicos.txt");
-    while (archivo.good())
-    {
-        //Declaracion de iables dentro del ciclo while.
-        getline(archivo, linea_archivo);
-        char separador;
-        int posicion_letra = 0;
-        string palabra;
-        int tamanio_linea = linea_archivo.size();
-
-        while (linea_archivo[posicion_letra] != '\0') //  '\0.' es el caracter nulo en la tabla ASCII.
-        {
-            if (linea_archivo[posicion_letra] != separador)
-            {
-                palabra += linea_archivo[posicion_letra];
-            }
-            else
-            {
-                while (linea_archivo[posicion_letra + 1] == ' ')
-                    posicion_letra++;
-
-                //cout << palabra << endl; //Borrar en la version final del trabajo
-                medicos[contador_medicos][contador_atributos] = palabra;
-                palabra.clear();
-                contador_atributos++;
-
-            }
-            posicion_letra++;
-        }
-        //cout << palabra << endl << "------------------" << endl; //Borrar en la version final del trabajo
-        medicos[contador_medicos][contador_atributos] = palabra;
-        contador_atributos = 0;
-        contador_medicos++;
-    }
-    archivo.close();*/
+    fMed.get(rMed.apeNom, nChEsp+1);
+    fMed.ignore();
+    fMed.get(rMed.esp, 6+1); // ignora matricula
+    fMed.ignore();
+    fMed.get(rMed.esp, nChEsp+1);
+    fMed.ignore();
+    fMed >> rMed.turno;
+    fMed.ignore();
 
     return fMed.good();
 }
+void procMedicos(ifstream &fMed, vecMed vMed, int *carMed){
+    regMed rMed;
 
-bool LeeSlc(ifstream &fSlc, Tur turnos){
-/*
-    //Pre condicion: La funcion recibe un vector de dos dimensiones vacio.
-    //Post condicion: El vector se llena con la informacion del archivo SolicitudTurnos.txt y la funcion no devuelve nada.
-
-    // Declaracion de iables
-    ifstream archivo;
-    string linea_archivo;
-    int contador_turnos = 0;
-    int contador_atributos = 0;
-
-    // Manipulacion del archivo SolicitudTurnos.txt
-    archivo.open("SolicitudTurnos.txt");
-    while (archivo.good())
-    {
-        //Declaracion de iables dentro del ciclo while.
-        getline(archivo, linea_archivo);
-        char separador;
-        int posicion_letra = 0;
-        string palabra;
-        int tamanio_linea = linea_archivo.size();
-
-        while (linea_archivo[posicion_letra] != '\0') //  '\0.' es el caracter nulo en la tabla ASCII.
-        {
-            if (linea_archivo[posicion_letra] != separador)
-            {
-                palabra += linea_archivo[posicion_letra];
-            }
-            else
-            {
-                //Checkear el if si funciona correctamente.
-                if (contador_atributos == 3 && linea_archivo[posicion_letra + 1] != ' ')
-                {
-                    palabra += linea_archivo[posicion_letra];
-                    posicion_letra++;
-                    while (linea_archivo[posicion_letra] != ' ')
-                    {
-                        palabra += linea_archivo[posicion_letra];
-                        posicion_letra++;
-                    }
-                }
-                if (contador_atributos == 5 && linea_archivo[posicion_letra + 1] != ' ')
-                {
-                    palabra += linea_archivo[posicion_letra];
-                    posicion_letra++;
-                    while (linea_archivo[posicion_letra] != ' ')
-                    {
-                        palabra += linea_archivo[posicion_letra];
-                        posicion_letra++;
-                    }
-                }
-                while (linea_archivo[posicion_letra + 1] == ' ')
-                    posicion_letra++;
-
-                turnos[contador_turnos][contador_atributos] = palabra;
-                palabra.clear();
-                contador_atributos++;
-
-            }
-            posicion_letra++;
-        }
-        //cout << palabra << endl << "------------------" << endl; //Borrar en la version final del trabajo
-        turnos[contador_turnos][contador_atributos] = palabra;
-        contador_atributos = 0;
-        contador_turnos++;
+    *carMed = 0;
+    while(LeeMed(fMed, rMed)){
+        strcpy(vMed[(*carMed)].apeNom, rMed.apeNom);
+        strcpy(vMed[(*carMed)].esp, rMed.esp);
+        vMed[(*carMed)].turno = rMed.turno;
+        (*carMed)++;
     }
-    archivo.close();
-*/
-
-    return fSlc.good();
 }
 
-void inicTur(tenTur &tTurnos, int nMaxEsp, int nMaxTur, int nMaxDias){
-    for(int e = 0; e < nMaxEsp; e++){
-        for(int t = 0; t < nMaxTur; t++){
+void IntCmb(str20 esp1, str20 esp2){
+    str20 aux;
+    strcpy(aux, esp1);
+    strcpy(esp1, esp2);
+    strcpy(esp2, aux);
+}
+void OrdxBur(vecEsp vEsp, int carEsp){
+    int k = 0;
+    bool ordenado;
+
+    do{
+        k++;
+        ordenado = true;
+
+        for(int i = 0; i <= carEsp-k-1; i++){
+            if(strcmp(vEsp[i], vEsp[i+1]) > 0){
+                ordenado = false;
+                IntCmb(vEsp[i], vEsp[i+1]);
+            }
+        }
+    } while(!ordenado);
+}
+bool LeeEsp(ifstream &fEsp, str20 esp){
+/**
+ * Descarga un registro de Especialidades en esp
+ * @return
+ * true = {lectura exitosa}
+ * false = {lectura no exitosa | fin de archivo}
+ */
+    fEsp.get(esp, nChEsp+1);
+    fEsp.ignore();
+
+    return fEsp.good();
+}
+void procEspecialidad(ifstream &fEsp, vecEsp vEsp, int *carEsp){
+    *carEsp = 0;
+    while( LeeEsp(fEsp, vEsp[*carEsp]) )
+        (*carEsp)++;
+    OrdxBur(vEsp, *carEsp);
+}
+
+void inicTur(tenTur &tTurnos, int nMaxEsp, int nMaxSes, int nMaxDias){
+    for(int e = 0; e < nMaxEsp; e++)
+        for(int t = 0; t < nMaxSes; t++)
             for(int d = 0; d < nMaxDias; d++){
                 strcpy(tTurnos[e][t][d].obra, "*");
                 tTurnos[e][t][d].cred = 0;
             }
-        }
-    }
 }
 bool LeeTur(ifstream &fTur, regTur &turno){
 /**
@@ -203,88 +168,10 @@ bool LeeTur(ifstream &fTur, regTur &turno){
 
     return fTur.good();
 }
-void tstMostrarTensor(tenTur tensor, Esp vEsp){
-    for(int a = 0; a < nMaxEsp; a++){
-        cout << "ESPECIALIDAD[" << a << "]: " << vEsp[a] << endl;
-        cout << "  |Obra social    |Creden" << endl;
-        for(int b = 0; b < nMaxTur; b++){
-            if(b < 10) cout << " ";
-            cout << b;
-            for(int c = 0; c < nMaxDias; c++){
-                cout << "|" << tensor[a][b][c].obra << "|";
-                cout << tensor[a][b][c].cred;
-            }
-            cout << endl;
-        } cout << endl << endl;
-    }
-}
-void tstMostrarRegTur(regTur rTur){
-    cout << rTur.esp << " ";
-    cout << rTur.dia << " ";
-    cout << rTur.hora << " ";
-    cout << rTur.minu << " ";
-    cout << rTur.turno.obra << " ";
-    cout << rTur.turno.cred << " ";
-    cout << endl;
-}
-short cnvHhMm(short hhmm){
+busBin(vecEsp vEsp, str20 eClv, int ult){
+    int pri = 0,
+        med;
 
-    const short hIni = 800,
-                hFin = 1930;
-    short pos = -1,
-          i = hIni;
-
-    while(i <= hFin && hhmm != i)
-        i = ++pos % 2 ? i + 70 : i + 30;
-
-    return ++pos;
-}
-
-bool LeeEsp(ifstream &fEsp, str20 esp){
-    fEsp.get(esp, nChEsp+1);
-    fEsp.ignore();
-
-    return fEsp.good();
-}
-void IntCmb(str20 esp1, str20 esp2){
-    str20 aux;
-    strcpy(aux, esp1);
-    strcpy(esp1, esp2);
-    strcpy(esp2, aux);
-}
-void OrdxBur(Esp vEsp, int carEsp){
-    int k;
-    bool ordenado;
-
-    k = 0;
-    do{
-        k++;
-        ordenado = true;
-
-        for(int i = 0; i <= carEsp-k-1; i++){
-            if(strcmp(vEsp[i], vEsp[i+1]) > 0){
-                ordenado = false;
-                IntCmb(vEsp[i], vEsp[i+1]);
-            }
-        }
-    } while(!ordenado);
-}
-void procEspecialidad(ifstream &fEsp, Esp vEsp, int *carEsp){
-    *carEsp = 0;
-    while( LeeEsp(fEsp, vEsp[*carEsp]) )
-        (*carEsp)++;
-    OrdxBur(vEsp, *carEsp);
-}
-void tstMostrarEsp(Esp vEsp, int carEsp){
-    for(int i = 0; i < carEsp; i++){
-        cout << "[" << i << "] " << vEsp[i]<< "|" << endl;
-    }
-    cout << "carEsp = " << carEsp << endl;
-}
-int busBin(Esp vEsp, str20 eClv, int ult){
-    int pri, med;
-
-    pri = 0;
     while(pri <= ult){
         med = (pri + ult) / 2;
         if(strcmp(eClv, vEsp[med]) == 0)
@@ -295,35 +182,59 @@ int busBin(Esp vEsp, str20 eClv, int ult){
     }
     return -1;
 }
-void procTurnos(ifstream &fTur, tenTur &tTur, regTur rTur, Esp vEsp, int carEsp, int *carTur){
+short cnvHhMm(short hhmm){
+/**
+ * @return posicion de hora sesion en funcion de hora en formato hhmm
+ */
+    const short hIni = 800;
+    short pos = -1,
+          i = hIni;
+
+    while(hhmm != i)
+        i = ++pos % 2 ? i + 70 : i + 30;
+
+    return ++pos;
+}
+void procTurnos(ifstream &fTur, tenTur &tTur, int *carTur, vecEsp vEsp, int carEsp){
     *carTur = 0;
-    inicTur(tTur, nMaxEsp, nMaxTur, nMaxDias); // acceso a variables globales, es error?
-    while( LeeTur(fTur, rTur)){
+    regTur rTur;
+
+    inicTur(tTur, nMaxEsp, nMaxSes, nMaxDias);
+    while(LeeTur(fTur, rTur)){
         strcpy(tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].obra, rTur.turno.obra);
         tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].cred = rTur.turno.cred;
         (*carTur)++;
     }
 }
 
-void procMedicos(ifstream &fMed, Med vMed, int *carMed){
-//    *carMed = 0;
-//    while(LeeMed(fMed, vMed[*carMed])){
-//        (*carMed)++;
-//    }
+void tstMostrarTensor(tenTur tensor, vecEsp vEsp){
+    for(int a = 0; a < nMaxEsp; a++){
+        cout << "ESPECIALIDAD[" << a << "]: " << vEsp[a] << endl;
+        cout << "  |Obra social    |Creden" << endl;
+        for(int b = 0; b < nMaxSes; b++){
+            if(b < 10) cout << " ";
+            cout << b;
+            for(int c = 0; c < nMaxDias; c++){
+                cout << "|" << tensor[a][b][c].obra << "|";
+                cout << tensor[a][b][c].cred;
+            }
+            cout << endl;
+        } cout << endl << endl;
+    }
 }
-
-void impEsp(ofstream &arch, short num){
-    if(num < 10) arch << " " << num;
-    else arch << num;
+void tstMostrarEsp(vecEsp vEsp, int carEsp){
+    for(int i = 0; i < carEsp; i++){
+        cout << "[" << i << "] " << vEsp[i]<< "|" << endl;
+    }
+    cout << "carEsp = " << carEsp << endl;
 }
 
 void cnvPosHhMm(str5 &res, int n){
-
     switch(n){
-        case 0: strcpy(res, "08:00"); break;
-        case 1: strcpy(res, "08:30"); break;
-        case 2: strcpy(res, "09:00"); break;
-        case 3: strcpy(res, "09:30"); break;
+        case 0: strcpy(res, " 8:00"); break;
+        case 1: strcpy(res, " 8:30"); break;
+        case 2: strcpy(res, " 9:00"); break;
+        case 3: strcpy(res, " 9:30"); break;
         case 4: strcpy(res, "10:00"); break;
         case 5: strcpy(res, "10:30"); break;
         case 6: strcpy(res, "11:00"); break;
@@ -346,100 +257,129 @@ void cnvPosHhMm(str5 &res, int n){
         case 23: strcpy(res,"19:30"); break;
     }
 }
+void impTurno(ofstream &fLst, str20 esp, int dia, int posHor, str15 obra, int cred){
+    str5 hora;
+    cnvPosHhMm(hora, posHor);
+    fLst << esp << " ";
+    fLst << setw(2) << dia << "  ";
+    fLst << hora << "  ";
+    fLst << obra << "  ";
+    fLst << setw(6) << cred;
+    fLst << endl;
+}
+void lstTurnos(ofstream &fLst, tenTur tTur, int carTur, vecEsp vEsp, str11 titulo){
+    int i,j,k;
 
-void lstTurnos(ofstream &fLst, tenTur tTur, int carTur, Esp vEsp){
+    i = j = k = 0;
 
-    int posEsp,
-        posTur,
-        posDia;
-    str5 cad;
-    str20 espAnt;
+    fLst << "Listado de turnos " << titulo << " orden Espec.+Dia+Turno" << endl;
+    fLst << "Especialidad        Dia Horario Obr. Soc.       Nro.Cred." << endl;
 
-    fLst << "Listado de turnos INICIAL orden Espec.+Dia+Turno" << endl;
-    fLst << "Especialidad        Dia Horario Obr. Soc.       Nro. Cred." << endl;
+    while(carTur){
+        if(strcmp(tTur[i][j][k].obra, "*")){
+            impTurno(fLst, vEsp[i], k+1, j, tTur[i][j][k].obra, tTur[i][j][k].cred);
+            carTur--;
+        }
+        k = ++j % nMaxSes ? k : ++k;
+        j %= nMaxSes;
+        i = k / nMaxDias ? ++i : i;
+        k %= nMaxDias;
+    }
 
-    posEsp = posTur = posDia = 0;
-    strcpy(espAnt, vEsp[0]);
-    while(carTur--){
-        while(tTur[posEsp][posTur][posDia].cred == 0){
-            posTur++;
-            if(posTur >= 24){
-                posDia++;
-                posTur = 0;
-            }
-            if(posDia >= 30){
-                posDia = 0;
-                posEsp++;
-            }
+    fLst << endl;
+}
+
+bool LeeSlc(ifstream &fSlc, regSlc &rSlc){
+/**
+ * Descarga un registro de TurnosActuales en rSlc
+ * @return
+ * true = {lectura exitosa}
+ * false = {lectura no exitosa | fin de archivo}
+ */
+
+    fSlc.get(rSlc.apeNom, nChEsp+1);
+    fSlc.ignore();
+    fSlc.get(rSlc.turno.obra, 2+1); // ignorando la edad
+    fSlc.ignore();
+    fSlc.get(rSlc.turno.obra, nChObS+1);
+    fSlc.ignore();
+    fSlc >> rSlc.turno.cred;
+    fSlc.ignore();
+    fSlc.get(rSlc.esp, nChEsp+1);
+    fSlc.ignore();
+    fSlc >> rSlc.dia;
+    fSlc.ignore();
+    fSlc.get(rSlc.chTur);
+    fSlc.ignore();
+
+    return fSlc.good();
+}
+
+void procSolicitud(ifstream &fSlc, tenTur &tTur, int *carTur, vecEsp vEsp, int carEsp, ofstream &fLst){
+    regSlc rSlc;
+    short posHor;
+    str5 hora;
+
+    fLst << "Listado de Solicitudes Actuales orden Cronologico" << endl;
+    fLst << "Apellido Nombre      Nom.Obr. Soc.   Nro.Cred. Especialidad        Dia Turno Medico/a" << endl;
+
+    while(LeeSlc(fSlc, rSlc)){
+        switch(rSlc.chTur){
+            case 'M': posHor = 0; break;
+            case 'T': posHor = 8; break;
+            case 'N': posHor = 16; break;
         }
 
-        fLst << vEsp[posEsp] << " ";
-        impEsp(fLst, posDia+1);
-        cnvPosHhMm(cad, posTur);
-        fLst << "  " << cad << "  ";
-        fLst << tTur[posEsp][posTur][posDia].obra << "  ";
-        fLst << tTur[posEsp][posTur][posDia].cred/100 << "." << tTur[posEsp][posTur][posDia].cred % 100;
-        fLst << endl;
+        while(strcmp(tTur[busBin(vEsp, rSlc.esp, carEsp)][posHor][rSlc.dia-1].obra, "*"))
+            posHor++;
+        strcpy(tTur[busBin(vEsp, rSlc.esp, carEsp)][posHor][rSlc.dia-1].obra, rSlc.turno.obra);
+        tTur[busBin(vEsp, rSlc.esp, carEsp)][posHor][rSlc.dia-1].cred = rSlc.turno.cred;
+        (*carTur)++;
 
-        posTur++;
+        cnvPosHhMm(hora, posHor);
+        fLst << rSlc.apeNom << " ";
+        fLst << rSlc.turno.obra << "  ";
+        fLst << rSlc.turno.cred << "   ";
+        fLst << rSlc.esp << " ";
+        fLst << setw(2) << rSlc.dia << " ";
+        fLst << hora << " ";
+        fLst << "Med(esp, turno)" << endl; // falta la funcion que devuelve el nombre del medico en funcion de la especialidad y el turno
     }
+
+    fLst << endl;
 }
 
 main() {
 
 //Declarar las variables utilizadas en el bloque main().
-
-    //Especialidades
-    Esp vEsp;
-    int *carEsp;
-
-    //Turnos
+    vecEsp vEsp;
     regTur rTur;
     tenTur tTur;
-    int *carTur;
-
-    //Medicos
-    Med vMed;
-    int *carMed;
+    vecMed vMed;
+    int *carEsp,
+        *carTur,
+        *carMed;
 
 //Abrir todos los archivos
-    ifstream fEsp("Especialidades.Txt");
-    ifstream fTur("TurnosDiaHora.Txt");
-    ifstream fMed("Medicos.Txt");
+    ifstream fMed("Medicos.Txt"),
+             fEsp("Especialidades.Txt"),
+             fTur("TurnosDiaHora.Txt"),
+             fSlc("SolicitudTurnos.Txt");
     ofstream fLst("Listadox3.Txt");
 
-    procMedicos(fMed, vMed, carMed);
+    //procMedicos(fMed, vMed, carMed);
     procEspecialidad(fEsp, vEsp, carEsp);
-    procTurnos(fTur, tTur, rTur, vEsp, *carEsp, carTur);
-    lstTurnos(fLst, tTur, *carTur, vEsp);
-    //tstMostrarTensor(tTur, vEsp);
-    //procTurnos();
-    //lstTurnos();
+    procTurnos(fTur, tTur, carTur, vEsp, *carEsp);
+    lstTurnos(fLst, tTur, *carTur, vEsp, "INICIAL");
+    procSolicitud(fSlc, tTur, carTur, vEsp, *carEsp, fLst);
+    lstTurnos(fLst, tTur, *carTur, vEsp, "ACTUALIZADO");
 
 //cerrar todos los archivos
+    fMed.close();
     fEsp.close();
     fTur.close();
-    fMed.close();
+    fSlc.close();
+    fLst.close();
 
-//    Medicos
-//    const int cantidad_medicos = 36;
-//    const int atributos_medico = 5;
-//    static string medicos[cantidad_medicos][atributos_medico];
-
-//    Turnos
-//    const int cantidad_turnos = 18;
-//    const int atributos_turnos = 8;
-//    static string turnos[cantidad_turnos][atributos_turnos];
-
-//    LeeSlc(turnos); // ERROR retorno de programa distinto de cero
-//    cout << "Testeo: " << turnos[3][3] << endl; //Borrar en la version final.
-//    LeeMed(medicos);
-//    cout << "Medicos: " << endl;
-//    for(int i = 0; i < 36; i++){
-//        for(int j = 0; j < 5; j++){
-//            cout << medicos[i][j];
-//        }
-//        cout << endl;
-//    }
     return 0;
 }
