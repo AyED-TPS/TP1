@@ -7,3 +7,4 @@ aclaraciones-dev/
 *.map
 *.obj
 *.tds
+comparaArchivos.cpp
