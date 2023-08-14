@@ -15,33 +15,35 @@
 #include <string.h>
 #include <iomanip.h>
 
+#define CENTINELA "*"
+
 using namespace std;
 
 // Especialidades
-const short nMaxEsp = 20,
-            nChEsp = 20;
-typedef char str20[nChEsp+1];
-typedef str20 vecEsp[nMaxEsp];
+const canMaxEsp = 20,
+      canChEsp = 20;
+typedef char str20[canChEsp+1];
+typedef str20 vecEsp[canMaxEsp];
 
 //Medicos
-const short nMaxMed = 60;
+const canMaxMed = 60;
 struct regMed{
     str20 apeNom,
           esp;
     char turno;
 };
-typedef regMed vecMed[nMaxMed];
+typedef regMed vecMed[canMaxMed];
 
 //Turnos
-const short nMaxSes = 24,
-            nMaxDias = 31,
-            nChObS = 15;
-typedef char str15[nChObS+1];
+const canMaxSes = 24,
+      canMaxDias = 31,
+      canChObSoc = 15;
+typedef char str15[canChObSoc+1];
 struct Tur{
     str15 obra;
     int cred;
 };
-typedef Tur tenTur[nMaxEsp][nMaxSes][nMaxDias];
+typedef Tur tenTur[canMaxEsp][canMaxSes][canMaxDias];
 
 //Turnos Previos
 struct regTur{
@@ -62,12 +64,12 @@ struct regSlc{
 };
 
 //Hora
-const nChTur = 5;
-typedef char str5[nChTur+1];
+const canChTur = 5;
+typedef char str5[canChTur+1];
 
 //Titulo
-const nChTit = 11;
-typedef char str11[nChTit+1];
+const canChTit = 11;
+typedef char str11[canChTit+1];
 
 bool LeeMed(ifstream &fMed, regMed &rMed){
 /**
@@ -77,11 +79,11 @@ bool LeeMed(ifstream &fMed, regMed &rMed){
  * false = {lectura no exitosa | fin de archivo}
  */
 
-    fMed.get(rMed.apeNom, nChEsp+1);
+    fMed.get(rMed.apeNom, canChEsp+1);
     fMed.ignore();
     fMed.get(rMed.esp, 6+1); // ignora matricula
     fMed.ignore();
-    fMed.get(rMed.esp, nChEsp+1);
+    fMed.get(rMed.esp, canChEsp+1);
     fMed.ignore();
     fMed.get(rMed.turno);
     fMed.ignore();
@@ -111,22 +113,20 @@ void OrdxBur(vecMed vMed, short carMed){
         k++;
         ordenado = true;
 
-        for(short i = 0; i < carMed-k; i++){
+        for(short i = 0; i < carMed-k; i++)
             if(strcmp(vMed[i].esp, vMed[i+1].esp) > 0){
                 ordenado = false;
                 IntCmb(vMed[i], vMed[i+1]);
             }
-            if(strcmp(vMed[i].esp, vMed[i+1].esp) == 0){
+            else if(!strcmp(vMed[i].esp, vMed[i+1].esp))
                 if(vMed[i].turno > vMed[i+1].turno){
                     ordenado = false;
                     IntCmb(vMed[i], vMed[i+1]);
                 }
-            }
-        }
     } while(!ordenado);
 }
 void procMedicos(ifstream &fMed, vecMed vMed){
-    int carMed = 0;
+    short carMed = 0;
     regMed rMed;
 
     while(LeeMed(fMed, rMed)){
@@ -153,7 +153,7 @@ void OrdxBur(vecEsp vEsp, short carEsp){
         k++;
         ordenado = true;
 
-        for(short i = 0; i <= carEsp-k-1; i++)
+        for(short i = 0; i < carEsp-k; i++)
             if(strcmp(vEsp[i], vEsp[i+1]) > 0){
                 ordenado = false;
                 IntCmb(vEsp[i], vEsp[i+1]);
@@ -167,7 +167,7 @@ bool LeeEsp(ifstream &fEsp, str20 esp){
  * true = {lectura exitosa}
  * false = {lectura no exitosa | fin de archivo}
  */
-    fEsp.get(esp, nChEsp+1);
+    fEsp.get(esp, canChEsp+1);
     fEsp.ignore();
 
     return fEsp.good();
@@ -179,11 +179,11 @@ void procEspecialidad(ifstream &fEsp, vecEsp vEsp, short *carEsp){
     OrdxBur(vEsp, *carEsp);
 }
 
-void inicTur(tenTur &tTurnos, short nMaxEsp, short nMaxSes, short nMaxDias){
-    for(short e = 0; e < nMaxEsp; e++)
-        for(short t = 0; t < nMaxSes; t++)
-            for(short d = 0; d < nMaxDias; d++){
-                strcpy(tTurnos[e][t][d].obra, "*");
+void inicTur(tenTur &tTurnos){
+    for(short e = 0; e < canMaxEsp; e++)
+        for(short t = 0; t < canMaxSes; t++)
+            for(short d = 0; d < canMaxDias; d++){
+                strcpy(tTurnos[e][t][d].obra, CENTINELA);
                 tTurnos[e][t][d].cred = 0;
             }
 }
@@ -195,11 +195,11 @@ bool LeeTur(ifstream &fTur, regTur &turno){
  * false: lectura no exitosa | fin de archivo
  */
 
-    fTur.get(turno.esp, nChEsp+1);
+    fTur.get(turno.esp, canChEsp+1);
     fTur.ignore();
     fTur >> turno.dia >> turno.hora >> turno.minu;
     fTur.ignore();
-    fTur.get(turno.turno.obra, nChObS+1);
+    fTur.get(turno.turno.obra, canChObSoc+1);
     fTur.ignore();
     fTur >> turno.turno.cred;
     fTur.ignore();
@@ -208,7 +208,7 @@ bool LeeTur(ifstream &fTur, regTur &turno){
 }
 short busBin(vecEsp vEsp, str20 eClv, short ult){
     short pri = 0,
-        med;
+          med;
 
     while(pri <= ult){
         med = (pri + ult) / 2;
@@ -234,13 +234,17 @@ short cnvHhMm(short hhmm){
     return ++pos;
 }
 void procTurnos(ifstream &fTur, tenTur &tTur, short *carTur, vecEsp vEsp, short carEsp){
-    *carTur = 0;
     regTur rTur;
+    short posEsp,
+          posHora;
 
-    inicTur(tTur, nMaxEsp, nMaxSes, nMaxDias);
+    *carTur = 0;
+    inicTur(tTur);
     while(LeeTur(fTur, rTur)){
-        strcpy(tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].obra, rTur.turno.obra);
-        tTur[busBin(vEsp, rTur.esp, carEsp)][cnvHhMm(rTur.hora*100 + rTur.minu)][rTur.dia-1].cred = rTur.turno.cred;
+        posEsp = busBin(vEsp, rTur.esp, carEsp),
+        posHora = cnvHhMm(rTur.hora*100 + rTur.minu);
+        strcpy(tTur[posEsp][posHora][rTur.dia-1].obra, rTur.turno.obra);
+        tTur[posEsp][posHora][rTur.dia-1].cred = rTur.turno.cred;
         (*carTur)++;
     }
 }
@@ -282,23 +286,30 @@ void impTurno(ofstream &fLst, str20 esp, short dia, short posHor, str15 obra, in
     fLst << setw(6) << cred;
     fLst << endl;
 }
-void lstTurnos(ofstream &fLst, tenTur tTur, short carTur, vecEsp vEsp, str11 titulo){
-    short i,j,k;
-
+void iniTitulo(ofstream &fLst, str11 titulo, short &i, short &j, short &k){
     i = j = k = 0;
-
     fLst << "Listado de turnos " << titulo << " orden Espec.+Dia+Turno" << endl;
     fLst << "Especialidad        Dia Horario Obr. Soc.       Nro.Cred." << endl;
+}
 
+void lstTurnos(ofstream &fLst, tenTur tTur, short carTur, vecEsp vEsp, str11 titulo){
+    short i,
+          j,
+          k;
+
+    iniTitulo(fLst, titulo, i, j, k);
     while(carTur){
-        if(strcmp(tTur[i][j][k].obra, "*")){
+        if(strcmp(tTur[i][j][k].obra, CENTINELA)){
             impTurno(fLst, vEsp[i], k+1, j, tTur[i][j][k].obra, tTur[i][j][k].cred);
             carTur--;
         }
-        k = ++j % nMaxSes ? k : ++k;
-        j %= nMaxSes;
-        i = k / nMaxDias ? ++i : i;
-        k %= nMaxDias;
+        j++;
+
+        if(j >= canMaxSes) k++;
+        j %= canMaxSes;
+
+        if(k >= canMaxDias) i++;
+        k %= canMaxDias;
     }
 
     fLst << endl;
@@ -312,15 +323,15 @@ bool LeeSlc(ifstream &fSlc, regSlc &rSlc){
  * false = {lectura no exitosa | fin de archivo}
  */
 
-    fSlc.get(rSlc.apeNom, nChEsp+1);
+    fSlc.get(rSlc.apeNom, canChEsp+1);
     fSlc.ignore();
     fSlc.get(rSlc.turno.obra, 2+1); // ignorando la edad
     fSlc.ignore();
-    fSlc.get(rSlc.turno.obra, nChObS+1);
+    fSlc.get(rSlc.turno.obra, canChObSoc+1);
     fSlc.ignore();
     fSlc >> rSlc.turno.cred;
     fSlc.ignore();
-    fSlc.get(rSlc.esp, nChEsp+1);
+    fSlc.get(rSlc.esp, canChEsp+1);
     fSlc.ignore();
     fSlc >> rSlc.dia;
     fSlc.ignore();
@@ -364,7 +375,8 @@ void grabaSlctd(ofstream &fLst, regSlc rSlc, short posHor, vecMed vMed, vecEsp v
 
 void procSolicitud(ifstream &fSlc, tenTur &tTur, short *carTur, vecEsp vEsp, short carEsp, ofstream &fLst, vecMed vMed){
     regSlc rSlc;
-    short posHor;
+    short posHor,
+          posEsp;
 
     ImprimirTit(fLst);
 
@@ -376,11 +388,12 @@ void procSolicitud(ifstream &fSlc, tenTur &tTur, short *carTur, vecEsp vEsp, sho
             case 'N': posHor = 16; break;
         }
 
-        while(strcmp(tTur[busBin(vEsp, rSlc.esp, carEsp)][posHor][rSlc.dia-1].obra, "*"))
+        posEsp = busBin(vEsp, rSlc.esp, carEsp);
+        while(strcmp(tTur[posEsp][posHor][rSlc.dia-1].obra, CENTINELA))
             posHor++;
 
-        strcpy(tTur[busBin(vEsp, rSlc.esp, carEsp)][posHor][rSlc.dia-1].obra, rSlc.turno.obra);
-        tTur[busBin(vEsp, rSlc.esp, carEsp)][posHor][rSlc.dia-1].cred = rSlc.turno.cred;
+        strcpy(tTur[posEsp][posHor][rSlc.dia-1].obra, rSlc.turno.obra);
+        tTur[posEsp][posHor][rSlc.dia-1].cred = rSlc.turno.cred;
         (*carTur)++;
 
         grabaSlctd(fLst, rSlc, posHor, vMed, vEsp, carEsp);
@@ -391,14 +404,14 @@ void procSolicitud(ifstream &fSlc, tenTur &tTur, short *carTur, vecEsp vEsp, sho
 
 main() {
 
-//Declarar las variables utilizadas en el bloque main().
+//Declaracion de variables utilizadas en el bloque main().
     vecEsp vEsp;
-    tenTur tTur;
     vecMed vMed;
+    tenTur tTur;
     short *carEsp,
           *carTur;
 
-//Abrir todos los archivos
+//Apertura de todos los archivos
     ifstream fMed("Medicos.Txt"),
              fEsp("Especialidades.Txt"),
              fTur("TurnosDiaHora.Txt"),
@@ -412,7 +425,7 @@ main() {
     procSolicitud(fSlc, tTur, carTur, vEsp, *carEsp, fLst, vMed);
     lstTurnos(fLst, tTur, *carTur, vEsp, "ACTUALIZADO");
 
-//cerrar todos los archivos
+//Cierre de todos los archivos
     fMed.close();
     fEsp.close();
     fTur.close();
