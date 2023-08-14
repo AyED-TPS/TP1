@@ -1,22 +1,22 @@
-Gomez Luis           229591 Radiologia           M
-Di Lorenzo Serena    270032 Radiologia           T
+Garcia Julio         215892 Farmacologia         T
 Venture Vin          281234 Radiologia           N
 Diaz Juana           284702 Farmacologia         M
-Garcia Julio         215892 Farmacologia         T
+Ruiz Pedro           241381 Analisis Clinico     N
 Flores Silvina       233938 Farmacologia         N
 Lopez Victot         202486 Ginecologia          M
-Acosta Oscar         579655 Ginecologia          T
+Di Lorenzo Serena    270032 Radiologia           T
 Benitez Roberto      242466 Ginecologia          N
 Sancho Nicolas       518995 Analisis Clinico     M
 Fernandez Liliana    410661 Analisis Clinico     T
-Ruiz Pedro           241381 Analisis Clinico     N
+Gomez Luis           229591 Radiologia           M
+Perez Cintia         952621 Neurologia           N
 Herrera Horacio      826340 Nutriologia          M
-Benitez Pedro        777389 Nutriologia          T
 Ramirez Roberto      354250 Nutriologia          N
+Acosta Oscar         579655 Ginecologia          T
 Fernandez Javier     210987 Neurologia           M
 Herrera Mauricio     287563 Neurologia           T
-Perez Cintia         952621 Neurologia           N
 Glasserman Milena    150105 Psiquiatria          M
+Benitez Pedro        777389 Nutriologia          T
 Flores Mario         354541 Psiquiatria          T
 Flores Ana           483284 Psiquiatria          N
 Insaurralde Camila   241407 Oftalmologia         M
