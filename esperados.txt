@@ -155,6 +155,7 @@ Francisca Berrocal   Medife           951645   Traumatologia        17 11:00 Dia
 Denis Santiago       Medife           122548   Traumatologia        17 11:30 Diaz Claudio        
 Ronaldo Cristiano    Ioma             321567   Traumatologia        17 12:00 Medina Sergio       
 Morales Miles        Osplad           321563   Radiologia           17  8:00 Gomez Luis          
+Watson Emma          Medife           215874   Neurologia           17 16:00 Perez Cintia        
 Esposito Lali        Medife           245124   Farmacologia         17 16:00 Flores Silvina      
 Holland Tom          Swiss Medical    775392   Farmacologia         17  8:00 Diaz Juana          
 Potter Harry         Galeno           752317   Psiquiatria          17 12:00 Flores Mario        
