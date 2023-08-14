@@ -1,6 +1,6 @@
 
 /*
-    Programa Fuente: TP1V1K1045G4-apellido_nombre.cpp
+    Programa Fuente: TP1V1K1045G4-Pingitore_Lautaro.cpp
     Fecha Entrega: 14/8/2023
     Nro. version: V1
     Objetivo: Asignacion de turnos por servicios medicos segun especialidad, dia y turno (mangana, tarde, noche),
@@ -8,7 +8,7 @@
     Curso: K1045
         Dias: Lunes, turno tarde.
     Grupo Nro.: 4
-    Integrantes: Cuello, Jeremias.
+    Integrantes: Cuello Jeremias, Pingitore Lautaro, Herrera Santiago, Carbonell Santiago, Regazzoli Martin, Olivares Luciano, Cabrera Franco, Uscamayta Rut Obed Corilloclla
 */
 
 #include <fstream.h>
