@@ -130,36 +130,36 @@ Traumatologia        16   9:00  Casa Salud       123456
 
 Listado de Solicitudes Actuales orden Cronologico
 Apellido Nombre      Nom.Obr. Soc.   Nro.Cred. Especialidad        Dia Turno Medico/a
-Zuckerberg Mark      Galeno           247891   Nutriologia          17 12:00 Med(esp, turno)
-Garfield Andrew      Galeno           215431   Nutriologia          17 16:00 Med(esp, turno)
-Stoessel Tini        Accord Salud     778012   Nutriologia          17 12:30 Med(esp, turno)
-Weasley Ron          Ioma             431780   Ginecologia          17  8:00 Med(esp, turno)
-Quito Esteban        Osde             321567   Ginecologia          17 16:00 Med(esp, turno)
-Musk Elon            Accord Salud     243879   Analisis Clinico     17  8:00 Med(esp, turno)
-Curie Marie          Medife           246312   Analisis Clinico     17  8:30 Med(esp, turno)
-Mbappe Kylian        Swiss Medical    243124   Analisis Clinico     17  9:00 Med(esp, turno)
-Parker Peter         Medife           123456   Analisis Clinico     17 16:00 Med(esp, turno)
-Rodriguez Javier     Swiss Medical    789012   Obstetricia          17 12:00 Med(esp, turno)
-Martinez Sofia       Galeno           456789   Pediatria            17 16:00 Med(esp, turno)
-Maguire Tobey        Accord Salud     767123   Dermatologia         17 12:00 Med(esp, turno)
-Perez Laura          Osplad           234567   Dermatologia         17 12:30 Med(esp, turno)
-Messi Lionel         Swiss Medical    321560   Cardiologia          17  8:00 Med(esp, turno)
-Lopez Ana            Accord Salud     987654   Cardiologia          17  8:30 Med(esp, turno)
-Gonzalez Maria       Medife           123456   Traumatologia        17  8:00 Med(esp, turno)
-Alver Julian         Medife           251849   Traumatologia        17  8:30 Med(esp, turno)
-Leonel Messi         Medife           135742   Traumatologia        17  9:00 Med(esp, turno)
-Ronaldo Cristiano    Medife           316847   Traumatologia        17  9:30 Med(esp, turno)
-Clemente Rodriguez   Medife           741963   Traumatologia        17 10:00 Med(esp, turno)
-Nahia Agullo         Medife           234876   Traumatologia        17 10:30 Med(esp, turno)
-Francisca Berrocal   Medife           951645   Traumatologia        17 11:00 Med(esp, turno)
-Denis Santiago       Medife           122548   Traumatologia        17 11:30 Med(esp, turno)
-Ronaldo Cristiano    Ioma             321567   Traumatologia        17 12:00 Med(esp, turno)
-Morales Miles        Osplad           321563   Radiologia           17  8:00 Med(esp, turno)
-Watson Emma          Medife           215874   Neurologia           17 16:00 Med(esp, turno)
-Esposito Lali        Medife           245124   Farmacologia         17 16:00 Med(esp, turno)
-Holland Tom          Swiss Medical    775392   Farmacologia         17  8:00 Med(esp, turno)
-Potter Harry         Galeno           752317   Psiquiatria          17 12:00 Med(esp, turno)
-Granger Hermione     Osplad           731890   Psiquiatria          17 12:30 Med(esp, turno)
+Zuckerberg Mark      Galeno           247891   Nutriologia          17 12:00 
+Garfield Andrew      Galeno           215431   Nutriologia          17 16:00 
+Stoessel Tini        Accord Salud     778012   Nutriologia          17 12:30 
+Weasley Ron          Ioma             431780   Ginecologia          17  8:00 
+Quito Esteban        Osde             321567   Ginecologia          17 16:00 
+Musk Elon            Accord Salud     243879   Analisis Clinico     17  8:00 
+Curie Marie          Medife           246312   Analisis Clinico     17  8:30 
+Mbappe Kylian        Swiss Medical    243124   Analisis Clinico     17  9:00 
+Parker Peter         Medife           123456   Analisis Clinico     17 16:00 
+Rodriguez Javier     Swiss Medical    789012   Obstetricia          17 12:00 
+Martinez Sofia       Galeno           456789   Pediatria            17 16:00 
+Maguire Tobey        Accord Salud     767123   Dermatologia         17 12:00 
+Perez Laura          Osplad           234567   Dermatologia         17 12:30 
+Messi Lionel         Swiss Medical    321560   Cardiologia          17  8:00 
+Lopez Ana            Accord Salud     987654   Cardiologia          17  8:30 
+Gonzalez Maria       Medife           123456   Traumatologia        17  8:00 
+Alver Julian         Medife           251849   Traumatologia        17  8:30 
+Leonel Messi         Medife           135742   Traumatologia        17  9:00 
+Ronaldo Cristiano    Medife           316847   Traumatologia        17  9:30 
+Clemente Rodriguez   Medife           741963   Traumatologia        17 10:00 
+Nahia Agullo         Medife           234876   Traumatologia        17 10:30 
+Francisca Berrocal   Medife           951645   Traumatologia        17 11:00 
+Denis Santiago       Medife           122548   Traumatologia        17 11:30 
+Ronaldo Cristiano    Ioma             321567   Traumatologia        17 12:00 
+Morales Miles        Osplad           321563   Radiologia           17  8:00 
+Watson Emma          Medife           215874   Neurologia           17 16:00 
+Esposito Lali        Medife           245124   Farmacologia         17 16:00 
+Holland Tom          Swiss Medical    775392   Farmacologia         17  8:00 
+Potter Harry         Galeno           752317   Psiquiatria          17 12:00 
+Granger Hermione     Osplad           731890   Psiquiatria          17 12:30 
 
 Listado de turnos ACTUALIZADO orden Espec.+Dia+Turno
 Especialidad        Dia Horario Obr. Soc.       Nro.Cred.
