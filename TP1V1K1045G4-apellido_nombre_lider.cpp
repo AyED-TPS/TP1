@@ -330,12 +330,12 @@ bool LeeSlc(ifstream &fSlc, regSlc &rSlc){
     return fSlc.good();
 }
 
-char* Medico(vecMed vMed, str20 rSlcEsp, vecEsp vEsp, short carEsp){
+char* Medico(vecMed vMed, str20 rSlcEsp, char rSlcTur, vecEsp vEsp, short carEsp){
     short posMed;
 
     posMed = 3*busBin(vEsp, rSlcEsp, carEsp);
 
-    switch(vMed[posMed].turno){
+    switch(rSlcTur){
         case 'N': posMed++; break;
         case 'T': posMed += 2; break;
     }
@@ -358,7 +358,7 @@ void grabaSlctd(ofstream &fLst, regSlc rSlc, short posHor, vecMed vMed, vecEsp v
     fLst << rSlc.esp << " ";
     fLst << setw(2) << rSlc.dia << " ";
     fLst << hora << " ";
-    fLst << Medico(vMed, rSlc.esp, vEsp, carEsp);
+    fLst << Medico(vMed, rSlc.esp, rSlc.chTur, vEsp, carEsp);
     fLst << endl;
 }
 
@@ -369,7 +369,6 @@ void procSolicitud(ifstream &fSlc, tenTur &tTur, short *carTur, vecEsp vEsp, sho
     ImprimirTit(fLst);
 
     while(LeeSlc(fSlc, rSlc)){
-
 
         switch(rSlc.chTur){
             case 'M': posHor = 0; break;
@@ -386,6 +385,7 @@ void procSolicitud(ifstream &fSlc, tenTur &tTur, short *carTur, vecEsp vEsp, sho
 
         grabaSlctd(fLst, rSlc, posHor, vMed, vEsp, carEsp);
     }
+
     fLst << endl;
 }
 
@@ -393,7 +393,6 @@ main() {
 
 //Declarar las variables utilizadas en el bloque main().
     vecEsp vEsp;
-    regTur rTur;
     tenTur tTur;
     vecMed vMed;
     short *carEsp,

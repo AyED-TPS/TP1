@@ -130,19 +130,19 @@ Traumatologia        16   9:00  Casa Salud       123456
 
 Listado de Solicitudes Actuales orden Cronologico
 Apellido Nombre      Nom.Obr. Soc.   Nro.Cred. Especialidad        Dia Turno Medico/a
-Zuckerberg Mark      Galeno           247891   Nutriologia          17 12:00 Herrera Horacio     
-Garfield Andrew      Galeno           215431   Nutriologia          17 16:00 Herrera Horacio     
-Stoessel Tini        Accord Salud     778012   Nutriologia          17 12:30 Herrera Horacio     
+Zuckerberg Mark      Galeno           247891   Nutriologia          17 12:00 Benitez Pedro       
+Garfield Andrew      Galeno           215431   Nutriologia          17 16:00 Ramirez Roberto     
+Stoessel Tini        Accord Salud     778012   Nutriologia          17 12:30 Benitez Pedro       
 Weasley Ron          Ioma             431780   Ginecologia          17  8:00 Lopez Victot        
-Quito Esteban        Osde             321567   Ginecologia          17 16:00 Lopez Victot        
+Quito Esteban        Osde             321567   Ginecologia          17 16:00 Benitez Roberto     
 Musk Elon            Accord Salud     243879   Analisis Clinico     17  8:00 Sancho Nicolas      
 Curie Marie          Medife           246312   Analisis Clinico     17  8:30 Sancho Nicolas      
 Mbappe Kylian        Swiss Medical    243124   Analisis Clinico     17  9:00 Sancho Nicolas      
-Parker Peter         Medife           123456   Analisis Clinico     17 16:00 Sancho Nicolas      
-Rodriguez Javier     Swiss Medical    789012   Obstetricia          17 12:00 Gonzalez Santhiago  
-Martinez Sofia       Galeno           456789   Pediatria            17 16:00 Gimenez Valeria     
-Maguire Tobey        Accord Salud     767123   Dermatologia         17 12:00 Miotti Bianca       
-Perez Laura          Osplad           234567   Dermatologia         17 12:30 Miotti Bianca       
+Parker Peter         Medife           123456   Analisis Clinico     17 16:00 Ruiz Pedro          
+Rodriguez Javier     Swiss Medical    789012   Obstetricia          17 12:00 Lopez Patricia      
+Martinez Sofia       Galeno           456789   Pediatria            17 16:00 Alvarez Raul        
+Maguire Tobey        Accord Salud     767123   Dermatologia         17 12:00 Flores Maximiliano  
+Perez Laura          Osplad           234567   Dermatologia         17 12:30 Flores Maximiliano  
 Messi Lionel         Swiss Medical    321560   Cardiologia          17  8:00 Toker Camila        
 Lopez Ana            Accord Salud     987654   Cardiologia          17  8:30 Toker Camila        
 Gonzalez Maria       Medife           123456   Traumatologia        17  8:00 Diaz Claudio        
@@ -153,13 +153,13 @@ Clemente Rodriguez   Medife           741963   Traumatologia        17 10:00 Dia
 Nahia Agullo         Medife           234876   Traumatologia        17 10:30 Diaz Claudio        
 Francisca Berrocal   Medife           951645   Traumatologia        17 11:00 Diaz Claudio        
 Denis Santiago       Medife           122548   Traumatologia        17 11:30 Diaz Claudio        
-Ronaldo Cristiano    Ioma             321567   Traumatologia        17 12:00 Diaz Claudio        
+Ronaldo Cristiano    Ioma             321567   Traumatologia        17 12:00 Medina Sergio       
 Morales Miles        Osplad           321563   Radiologia           17  8:00 Gomez Luis          
-Watson Emma          Medife           215874   Neurologia           17 16:00 Fernandez Javier    
-Esposito Lali        Medife           245124   Farmacologia         17 16:00 Diaz Juana          
+Watson Emma          Medife           215874   Neurologia           17 16:00 Perez Cintia        
+Esposito Lali        Medife           245124   Farmacologia         17 16:00 Flores Silvina      
 Holland Tom          Swiss Medical    775392   Farmacologia         17  8:00 Diaz Juana          
-Potter Harry         Galeno           752317   Psiquiatria          17 12:00 Glasserman Milena   
-Granger Hermione     Osplad           731890   Psiquiatria          17 12:30 Glasserman Milena   
+Potter Harry         Galeno           752317   Psiquiatria          17 12:00 Flores Mario        
+Granger Hermione     Osplad           731890   Psiquiatria          17 12:30 Flores Mario        
 
 Listado de turnos ACTUALIZADO orden Espec.+Dia+Turno
 Especialidad        Dia Horario Obr. Soc.       Nro.Cred.
