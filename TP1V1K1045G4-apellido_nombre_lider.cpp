@@ -125,18 +125,18 @@ void OrdxBur(vecMed vMed, short carMed){
         }
     } while(!ordenado);
 }
-void procMedicos(ifstream &fMed, vecMed vMed, short *carMed){
+void procMedicos(ifstream &fMed, vecMed vMed){
+    int carMed = 0;
     regMed rMed;
 
-    *carMed = 0;
     while(LeeMed(fMed, rMed)){
-        strcpy(vMed[(*carMed)].apeNom, rMed.apeNom);
-        strcpy(vMed[(*carMed)].esp, rMed.esp);
-        vMed[(*carMed)].turno = rMed.turno;
-        (*carMed)++;
+        strcpy(vMed[carMed].apeNom, rMed.apeNom);
+        strcpy(vMed[carMed].esp, rMed.esp);
+        vMed[carMed].turno = rMed.turno;
+        carMed++;
     }
 
-    OrdxBur(vMed, *carMed);
+    OrdxBur(vMed, carMed);
 }
 
 void IntCmb(str20 esp1, str20 esp2){
@@ -358,7 +358,7 @@ void grabaSlctd(ofstream &fLst, regSlc rSlc, short posHor, vecMed vMed, vecEsp v
     fLst << rSlc.esp << " ";
     fLst << setw(2) << rSlc.dia << " ";
     fLst << hora << " ";
-    //fLst << Medico(vMed, rSlc.esp, vEsp, carEsp);
+    fLst << Medico(vMed, rSlc.esp, vEsp, carEsp);
     fLst << endl;
 }
 
@@ -397,8 +397,7 @@ main() {
     tenTur tTur;
     vecMed vMed;
     short *carEsp,
-          *carTur,
-          *carMed;
+          *carTur;
 
 //Abrir todos los archivos
     ifstream fMed("Medicos.Txt"),
@@ -407,7 +406,7 @@ main() {
              fSlc("SolicitudTurnos.Txt");
     ofstream fLst("Listadox3.Txt");
 
-    //procMedicos(fMed, vMed, carMed);
+    procMedicos(fMed, vMed);
     procEspecialidad(fEsp, vEsp, carEsp);
     procTurnos(fTur, tTur, carTur, vEsp, *carEsp);
     lstTurnos(fLst, tTur, *carTur, vEsp, "INICIAL");
